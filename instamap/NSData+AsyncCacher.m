@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Anton Bukov. All rights reserved.
 //
 #import "NSData+AsyncCacher.h"
-#import <SAMCache.h>
+#import "SAMCache.h"
 
 @implementation NSData (AsyncCacher)
 

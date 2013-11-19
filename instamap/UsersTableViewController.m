@@ -9,12 +9,11 @@
 #import "UsersTableViewController.h"
 #import "InstaApiTags.h"
 #import "PhotosCollectionViewController.h"
-#import <SAMCache.h>
+#import "NSData+AsyncCacher.h"
 
 @interface UsersTableViewController ()
 {
     NSString *accessToken;
-    SAMCache *cache;
 }
 
 @property (nonatomic, strong) NSMutableArray* users;
@@ -52,7 +51,7 @@
 {
     [super viewDidLoad];
 
-    cache = [SAMCache sharedCache];
+//    cache = [SAMCache sharedCache];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,33 +91,18 @@
     UILabel *label2 = (id)[cell.contentView viewWithTag:102];
     label2.text = [self.users[indexPath.row] index];
     
-    UIImage * image = [cache imageForKey:url];
-    if (image)
-    {
-        imageView.image = image;
-        return cell;
-    }
-    
-    
-    if ([self.loading_urls containsObject:url])
-        return cell;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // ....
-        [self.loading_urls addObject:url];
-        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        UIImage * image = [UIImage imageWithData:data];
-        [cache setImage:image forKey:url];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //...
-            UITableViewCell * cell2 = [tableView cellForRowAtIndexPath:self.ipByUrl[url]];
-            if (!cell2)
-                return;
-            UIImageView * imageView = (id)[cell2.contentView viewWithTag:100];
-            imageView.image = image;
-            [self.ipByUrl removeObjectForKey:url];
-        });
-    });
+    [NSData getDataFromURL:[NSURL URLWithString:url]
+                             toBlock:^(NSData * data, BOOL * retry)
+     {
+         if (data == nil) {
+             *retry = YES;
+             return;
+         }
+         
+         UIImageView * imageView = (id)[cell.contentView viewWithTag:100];
+         imageView.image =  [UIImage imageWithData:data];;
+         [self.ipByUrl removeObjectForKey:url];
+     }];
     
     return cell;
 }
@@ -149,7 +133,7 @@
             return;
         
         self.users = [[NSMutableArray alloc]initWithArray:records];
-        [cache removeAllObjects];
+//        [cache removeAllObjects];
         NSLog(@"get it");
         [self.tableView reloadData];
     }];

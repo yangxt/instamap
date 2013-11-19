@@ -8,7 +8,7 @@
 
 #import "PhotosCollectionViewController.h"
 #import "InstaApiTags.h"
-#import <SAMCache.h>
+#import "SAMCache.h"
 
 @interface PhotosCollectionViewController ()
 {

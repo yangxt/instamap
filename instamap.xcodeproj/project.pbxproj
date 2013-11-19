@@ -27,6 +27,7 @@
 		508346BE183B761900918420 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 508346BC183B761900918420 /* InfoPlist.strings */; };
 		508346C0183B761900918420 /* instamapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 508346BF183B761900918420 /* instamapTests.m */; };
 		50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */; };
+		50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF0183BE5D400A2982D /* SAMCache.m */; };
 		8ED8658130D3450EA9084629 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1A60CD9F2C4B9D955F05B5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,8 @@
 		508346BF183B761900918420 /* instamapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = instamapTests.m; sourceTree = "<group>"; };
 		50A10DE9183BD0AE00A2982D /* NSData+AsyncCacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AsyncCacher.h"; sourceTree = "<group>"; };
 		50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AsyncCacher.m"; sourceTree = "<group>"; };
+		50A10DEF183BE5D400A2982D /* SAMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMCache.h; sourceTree = "<group>"; };
+		50A10DF0183BE5D400A2982D /* SAMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMCache.m; sourceTree = "<group>"; };
 		DA1A60CD9F2C4B9D955F05B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +150,7 @@
 		5083469A183B761900918420 /* instamap */ = {
 			isa = PBXGroup;
 			children = (
+				50A10DEE183BE58C00A2982D /* SAMCache */,
 				50A10DE8183BD08400A2982D /* NSData+AsyncCacher */,
 				5066B3F5183B89EC00B596DC /* InstaWork */,
 				508346A3183B761900918420 /* AppDelegate.h */,
@@ -202,6 +206,15 @@
 				50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */,
 			);
 			name = "NSData+AsyncCacher";
+			sourceTree = "<group>";
+		};
+		50A10DEE183BE58C00A2982D /* SAMCache */ = {
+			isa = PBXGroup;
+			children = (
+				50A10DEF183BE5D400A2982D /* SAMCache.h */,
+				50A10DF0183BE5D400A2982D /* SAMCache.m */,
+			);
+			name = SAMCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +357,7 @@
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
 				50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */,
 				50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */,
+				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
