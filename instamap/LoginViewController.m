@@ -32,13 +32,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    NSHTTPCookie *cookie;
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [storage cookies]) {
-        [storage deleteCookie:cookie];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
 
