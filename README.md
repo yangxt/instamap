@@ -1,4 +1,4 @@
 instamap
 ========
 
-photo in map in future
+карточки инстаграма на карте
