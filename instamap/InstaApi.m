@@ -17,7 +17,7 @@
         return nil;
     }
     self.thumbnailUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"thumbnail"] valueForKeyPath:@"url"];
-//    self.standardUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"standard_resolution"] valueForKeyPath:@"url"];
+    self.standardUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"standard_resolution"] valueForKeyPath:@"url"];
 //    self.likes = [[[attributes objectForKey:@"likes"] valueForKey:@"count"] integerValue];
 //    self.comments = [[[attributes objectForKey:@"comments"] valueForKey:@"count"] integerValue];
     self.username = [attributes valueForKeyPath:@"username"];

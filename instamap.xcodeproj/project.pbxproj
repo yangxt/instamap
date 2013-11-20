@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A930E183CBDAB00D0180D /* CoreImage.framework */; };
+		504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A9310183CBDEE00D0180D /* QuartzCore.framework */; };
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
 		5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F3183B870F00B596DC /* UsersTableViewController.m */; };
 		5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F7183B8A2900B596DC /* InstaClient.m */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		313410F97DF34B86BAFDA071 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		504A930E183CBDAB00D0180D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		504A9310183CBDEE00D0180D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5066B3EC183B7F3000B596DC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5066B3ED183B7F3000B596DC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5066B3F2183B870F00B596DC /* UsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersTableViewController.h; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */,
+				504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */,
 				50A10DF6183C926D00A2982D /* MapKit.framework in Frameworks */,
 				50834697183B761900918420 /* CoreGraphics.framework in Frameworks */,
 				50834699183B761900918420 /* UIKit.framework in Frameworks */,
@@ -141,6 +147,8 @@
 		50834693183B761900918420 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				504A9310183CBDEE00D0180D /* QuartzCore.framework */,
+				504A930E183CBDAB00D0180D /* CoreImage.framework */,
 				50A10DF5183C926D00A2982D /* MapKit.framework */,
 				50834694183B761900918420 /* Foundation.framework */,
 				50834696183B761900918420 /* CoreGraphics.framework */,

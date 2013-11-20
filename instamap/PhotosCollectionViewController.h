@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <CoreImage/CoreImage.h>
 
-@interface PhotosCollectionViewController : UICollectionViewController
+@interface PhotosCollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSString *userId;
+@property (weak, nonatomic) IBOutlet UIImageView *largeImage;
+@property (weak, nonatomic) IBOutlet UIView *blurContainerView;
+@property (weak, nonatomic) IBOutlet UIView *transparentView;
+- (IBAction)taped:(id)sender;
 
 @end

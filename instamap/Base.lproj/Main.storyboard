@@ -95,7 +95,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="UWH-pz-xLs" kind="push" identifier="usermedia" id="7yg-6C-IHl"/>
+                                    <segue destination="Ox7-fN-oiW" kind="push" identifier="usermedia" id="TnW-bm-rZc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -117,52 +117,88 @@
             <point key="canvasLocation" x="754" y="181"/>
         </scene>
         <!--Photos Collection View Controller - Photos-->
-        <scene sceneID="RZo-dM-Gz5">
+        <scene sceneID="Ahq-dR-BIy">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="UWH-pz-xLs" customClass="PhotosCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="aCI-2l-99t">
+                <viewController id="Ox7-fN-oiW" customClass="PhotosCollectionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ghv-jB-OpH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bUG-py-xzy">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstaCell" id="wRU-ii-m6l">
-                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Q2M-YL-ur1">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="z7Q-nR-tVU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EdE-ZV-DFp">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstaCell" id="O3B-Ra-Q54">
+                                        <rect key="frame" x="0.0" y="64" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <size key="customSize" width="100" height="100"/>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="UWH-pz-xLs" id="tty-Mq-GTF"/>
-                            <outlet property="delegate" destination="UWH-pz-xLs" id="8hv-Sc-6j1"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Photos" id="ASV-jF-pG9">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="Obi-A1-7Eg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="X8Y-vz-BSy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="100" height="100"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ox7-fN-oiW" id="RZ7-SY-8gu"/>
+                                    <outlet property="delegate" destination="Ox7-fN-oiW" id="jo2-jH-qzV"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" id="mTO-PB-PEj" userLabel="blurContainerView">
+                                <rect key="frame" x="0.0" y="65" width="320" height="415"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="IrZ-FC-dmo" userLabel="transparentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="u4g-gU-82l">
+                                        <rect key="frame" x="10" y="44" width="300" height="300"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OQS-Nz-m57" appends="YES" id="tEA-9e-ndg"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photos" id="uWi-sk-r0O">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="rHj-Br-45S">
                             <connections>
-                                <segue destination="uBv-un-BNg" kind="push" identifier="map" id="Nd4-KR-a3i"/>
+                                <segue destination="uBv-un-BNg" kind="push" identifier="map" id="AGx-1b-Sv0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PEA-o5-o7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="blurContainerView" destination="mTO-PB-PEj" id="5pt-eK-IiS"/>
+                        <outlet property="collectionView" destination="z7Q-nR-tVU" id="ViA-Xg-uw8"/>
+                        <outlet property="largeImage" destination="u4g-gU-82l" id="04B-nn-sG5"/>
+                        <outlet property="transparentView" destination="IrZ-FC-dmo" id="H3L-C6-GoS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ak8-JH-OAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OQS-Nz-m57">
+                    <connections>
+                        <action selector="taped:" destination="Ox7-fN-oiW" id="tno-OJ-s8D"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1252" y="182"/>
+            <point key="canvasLocation" x="1326" y="181"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="agu-dS-fD6">

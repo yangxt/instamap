@@ -17,6 +17,7 @@
     SAMCache *cache;
     float minid;
     NSMutableArray *thumbnails;
+    UIImage *blurrredImage;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -52,6 +53,10 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.blurContainerView.alpha = 0.0;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,6 +64,12 @@
     
     cache = [SAMCache sharedCache];
     thumbnails = [NSMutableArray array];
+    
+    self.largeImage.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.largeImage.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+    self.largeImage.layer.shadowOpacity = 0.41f;
+    self.largeImage.layer.shadowRadius = 5.0f;
+    
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor orangeColor];
@@ -167,6 +178,8 @@
             UIImageView * imageView = (id)[cell2.contentView viewWithTag:200];
             imageView.image = image;
             [self.ipByUrl removeObjectForKey:url];
+            
+            
         });
     });
     
@@ -229,6 +242,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self hideLargeImage];
     if ([[segue identifier] isEqualToString:@"map"])
     {
         MapViewController *map = [segue destinationViewController];
@@ -236,5 +250,73 @@
     }
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"test");
+    [self captureBlur];
+//    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
+    
+    NSString *url = [self.images[indexPath.row] standardUrl];
+    UIImage *image = [cache imageForKey:url];
+    if (image)
+    {
+        self.largeImage.image = image;
+    }
+    else
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.loading_urls addObject:url];
+            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+            UIImage * image = [UIImage imageWithData:data];
+            [cache setImage:image forKey:url];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.largeImage.image = image;
+            });
+        });
+    }
 
+    [UIView animateWithDuration:0.3 animations:^{
+        self.blurContainerView.alpha = 1.0;
+        self.collectionView.alpha = 0.0;
+    }];
+}
+
+- (void) captureBlur {
+    //Get a UIImage from the UIView
+    NSLog(@"blur capture");
+    UIGraphicsBeginImageContext(self.collectionView.bounds.size);
+    [self.collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //Blur the UIImage
+    CIImage *imageToBlur = [CIImage imageWithCGImage:viewImage.CGImage];
+    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
+    [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
+    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 2] forKey: @"inputRadius"];
+    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
+    
+    //create UIImage from filtered image
+    blurrredImage = [[UIImage alloc] initWithCIImage:resultImage];
+    
+    //Place the UIImage in a UIImageView
+    UIImageView *newView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    newView.image = blurrredImage;
+    
+    //insert blur UIImageView below transparent view inside the blur image container
+    [self.blurContainerView insertSubview:newView belowSubview:self.transparentView];
+}
+
+- (IBAction)taped:(id)sender {
+    [self hideLargeImage];
+}
+
+- (void)hideLargeImage
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.blurContainerView.alpha = 0.0;
+        self.collectionView.alpha = 1.0;
+    }];
+    self.largeImage.image = nil;
+}
 @end

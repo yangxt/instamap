@@ -11,7 +11,7 @@
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (strong, nonatomic) NSMutableArray *thumbnails;
 
