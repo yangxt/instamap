@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "InstaApi.h"
+#import "InstaClient.h"
 
 @interface LoginViewController ()
 {

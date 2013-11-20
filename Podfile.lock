@@ -17,11 +17,14 @@ PODS:
   - AFNetworking/Serialization (2.0.3)
   - AFNetworking/UIKit (2.0.3):
     - AFNetworking/NSURLConnection
+  - JPSThumbnailAnnotation (HEAD based on 0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - JPSThumbnailAnnotation (HEAD)
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
+  JPSThumbnailAnnotation: 5919ca300ebaeb43e3d8809639d29372a5fc09f4
 
 COCOAPODS: 0.28.0

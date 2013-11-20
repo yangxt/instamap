@@ -7,7 +7,7 @@
 //
 
 #import "UsersTableViewController.h"
-#import "InstaApiTags.h"
+#import "InstaApi.h"
 #import "PhotosCollectionViewController.h"
 #import "NSData+AsyncCacher.h"
 
@@ -127,7 +127,7 @@
 {
     accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(accessToken == nil) return;
-    [InstaApiTags searchUser:userName withAccessToken:accessToken block:^(NSArray *records) {
+    [InstaApi searchUser:userName withAccessToken:accessToken block:^(NSArray *records) {
         
         if (records.count == 0)
             return;

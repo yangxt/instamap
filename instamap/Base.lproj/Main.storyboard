@@ -146,11 +146,44 @@
                             <outlet property="delegate" destination="UWH-pz-xLs" id="8hv-Sc-6j1"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Photos" id="ASV-jF-pG9"/>
+                    <navigationItem key="navigationItem" title="Photos" id="ASV-jF-pG9">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="Obi-A1-7Eg">
+                            <connections>
+                                <segue destination="uBv-un-BNg" kind="push" identifier="map" id="Nd4-KR-a3i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEA-o5-o7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1252" y="182"/>
+        </scene>
+        <!--Map View Controller - Map-->
+        <scene sceneID="agu-dS-fD6">
+            <objects>
+                <viewController id="uBv-un-BNg" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pxP-tt-A0v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Agn-TM-rVv">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uBv-un-BNg" id="TCY-nb-DfO"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="h1k-0b-UUx"/>
+                    <connections>
+                        <outlet property="mapView" destination="Agn-TM-rVv" id="pDS-a0-eHp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UY9-Kb-2Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813" y="-388"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

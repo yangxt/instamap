@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Andrei Rozhkov. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface LoginViewController : ViewController <UIWebViewDelegate>
+@interface LoginViewController : UIViewController <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 

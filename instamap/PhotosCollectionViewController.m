@@ -7,13 +7,16 @@
 //
 
 #import "PhotosCollectionViewController.h"
-#import "InstaApiTags.h"
+#import "InstaApi.h"
 #import "SAMCache.h"
+#import "MapViewController.h"
+#import <JPSThumbnail.h>
 
 @interface PhotosCollectionViewController ()
 {
     SAMCache *cache;
     float minid;
+    NSMutableArray *thumbnails;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -55,6 +58,7 @@
 	// Do any additional setup after loading the view.
     
     cache = [SAMCache sharedCache];
+    thumbnails = [NSMutableArray array];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor orangeColor];
@@ -72,11 +76,11 @@
     
 }
 
-- (IBAction)refresh
+- (void)refresh
 {
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil) return;
-    [InstaApiTags mediaFromUser:self.userId withAccessToken:self.accessToken block:^(NSArray *records) {
+    [InstaApi mediaFromUser:self.userId withAccessToken:self.accessToken block:^(NSArray *records) {
         
         if (records.count == 0)
             return;
@@ -139,6 +143,21 @@
         NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         UIImage * image = [UIImage imageWithData:data];
         [cache setImage:image forKey:url];
+    
+        NSString *latitude = [self.images[indexPath.row] latitude];
+        NSString *longitude = [self.images[indexPath.row] longitude];
+        if ((NSNull *) latitude != [NSNull null])
+        {
+            JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
+            thumbnail.image = image;
+            thumbnail.title = [self.images[indexPath.row] locationName];
+            NSDate *dateToday =[NSDate dateWithTimeIntervalSince1970:[[self.images[indexPath.row] createdTime] integerValue]];
+            NSDateFormatter *format = [[NSDateFormatter alloc] init];
+            [format setDateFormat:@"d-MMM-yyyy HH:mm"];
+            thumbnail.subtitle = [format stringFromDate:dateToday];;
+            thumbnail.coordinate = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+            [thumbnails addObject:thumbnail];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             //...
             UICollectionViewCell * cell2 = [collectionView cellForItemAtIndexPath:self.ipByUrl[url]];
@@ -154,10 +173,10 @@
     if(indexPath.row == self.images.count-5)
     {
         NSLog(@"Bottom" );
-        InstaApiTags *q =(InstaApiTags *)[self.images lastObject];
+        InstaApi *q =(InstaApi *)[self.images lastObject];
         NSLog(@"max %@",q.index);
         
-        [InstaApiTags mediaFromUser:self.userId afterMaxId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
+        [InstaApi mediaFromUser:self.userId afterMaxId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
             
             if (records.count == 0)
                 return;
@@ -179,11 +198,11 @@
 {
     NSLog(@"Top" );
     
-    InstaApiTags *q =(InstaApiTags *)[self.images objectAtIndex:0];
+    InstaApi *q =(InstaApi *)[self.images objectAtIndex:0];
     
     NSLog(@"min %@",q.index);
     
-    [InstaApiTags mediaFromUser:self.userId beforeMinId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
+    [InstaApi mediaFromUser:self.userId beforeMinId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
         
         if (records.count == 0)
             return;
@@ -206,6 +225,15 @@
         });
     }];
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"map"])
+    {
+        MapViewController *map = [segue destinationViewController];
+        [map setThumbnails:thumbnails];
+    }
 }
 
 

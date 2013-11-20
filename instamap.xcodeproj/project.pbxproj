@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
 		5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F3183B870F00B596DC /* UsersTableViewController.m */; };
-		5066B3FA183B8A2900B596DC /* InstaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F7183B8A2900B596DC /* InstaApi.m */; };
-		5066B3FB183B8A2900B596DC /* InstaApiTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F9183B8A2900B596DC /* InstaApiTags.m */; };
+		5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F7183B8A2900B596DC /* InstaClient.m */; };
+		5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F9183B8A2900B596DC /* InstaApi.m */; };
 		50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */; };
 		50834695183B761900918420 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50834694183B761900918420 /* Foundation.framework */; };
 		50834697183B761900918420 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50834696183B761900918420 /* CoreGraphics.framework */; };
@@ -19,7 +19,6 @@
 		508346A1183B761900918420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 508346A0183B761900918420 /* main.m */; };
 		508346A5183B761900918420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 508346A4183B761900918420 /* AppDelegate.m */; };
 		508346A8183B761900918420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508346A6183B761900918420 /* Main.storyboard */; };
-		508346AB183B761900918420 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508346AA183B761900918420 /* ViewController.m */; };
 		508346AD183B761900918420 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 508346AC183B761900918420 /* Images.xcassets */; };
 		508346B4183B761900918420 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508346B3183B761900918420 /* XCTest.framework */; };
 		508346B5183B761900918420 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50834694183B761900918420 /* Foundation.framework */; };
@@ -28,6 +27,8 @@
 		508346C0183B761900918420 /* instamapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 508346BF183B761900918420 /* instamapTests.m */; };
 		50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */; };
 		50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF0183BE5D400A2982D /* SAMCache.m */; };
+		50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF3183C8F3600A2982D /* MapViewController.m */; };
+		50A10DF6183C926D00A2982D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A10DF5183C926D00A2982D /* MapKit.framework */; };
 		8ED8658130D3450EA9084629 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1A60CD9F2C4B9D955F05B5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +48,10 @@
 		5066B3ED183B7F3000B596DC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5066B3F2183B870F00B596DC /* UsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersTableViewController.h; sourceTree = "<group>"; };
 		5066B3F3183B870F00B596DC /* UsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersTableViewController.m; sourceTree = "<group>"; };
-		5066B3F6183B8A2900B596DC /* InstaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaApi.h; sourceTree = "<group>"; };
-		5066B3F7183B8A2900B596DC /* InstaApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaApi.m; sourceTree = "<group>"; };
-		5066B3F8183B8A2900B596DC /* InstaApiTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaApiTags.h; sourceTree = "<group>"; };
-		5066B3F9183B8A2900B596DC /* InstaApiTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaApiTags.m; sourceTree = "<group>"; };
+		5066B3F6183B8A2900B596DC /* InstaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaClient.h; sourceTree = "<group>"; };
+		5066B3F7183B8A2900B596DC /* InstaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaClient.m; sourceTree = "<group>"; };
+		5066B3F8183B8A2900B596DC /* InstaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaApi.h; sourceTree = "<group>"; };
+		5066B3F9183B8A2900B596DC /* InstaApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaApi.m; sourceTree = "<group>"; };
 		50715DC5183BAC0C00BAD71D /* PhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewController.h; sourceTree = "<group>"; };
 		50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewController.m; sourceTree = "<group>"; };
 		50834691183B761900918420 /* instamap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instamap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,8 +65,6 @@
 		508346A3183B761900918420 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		508346A4183B761900918420 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		508346A7183B761900918420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		508346A9183B761900918420 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		508346AA183B761900918420 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		508346AC183B761900918420 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		508346B2183B761900918420 /* instamapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = instamapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		508346B3183B761900918420 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -76,6 +75,9 @@
 		50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AsyncCacher.m"; sourceTree = "<group>"; };
 		50A10DEF183BE5D400A2982D /* SAMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMCache.h; sourceTree = "<group>"; };
 		50A10DF0183BE5D400A2982D /* SAMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMCache.m; sourceTree = "<group>"; };
+		50A10DF2183C8F3600A2982D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		50A10DF3183C8F3600A2982D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		50A10DF5183C926D00A2982D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DA1A60CD9F2C4B9D955F05B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A10DF6183C926D00A2982D /* MapKit.framework in Frameworks */,
 				50834697183B761900918420 /* CoreGraphics.framework in Frameworks */,
 				50834699183B761900918420 /* UIKit.framework in Frameworks */,
 				50834695183B761900918420 /* Foundation.framework in Frameworks */,
@@ -107,10 +110,10 @@
 		5066B3F5183B89EC00B596DC /* InstaWork */ = {
 			isa = PBXGroup;
 			children = (
-				5066B3F6183B8A2900B596DC /* InstaApi.h */,
-				5066B3F7183B8A2900B596DC /* InstaApi.m */,
-				5066B3F8183B8A2900B596DC /* InstaApiTags.h */,
-				5066B3F9183B8A2900B596DC /* InstaApiTags.m */,
+				5066B3F6183B8A2900B596DC /* InstaClient.h */,
+				5066B3F7183B8A2900B596DC /* InstaClient.m */,
+				5066B3F8183B8A2900B596DC /* InstaApi.h */,
+				5066B3F9183B8A2900B596DC /* InstaApi.m */,
 			);
 			name = InstaWork;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 		50834693183B761900918420 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50A10DF5183C926D00A2982D /* MapKit.framework */,
 				50834694183B761900918420 /* Foundation.framework */,
 				50834696183B761900918420 /* CoreGraphics.framework */,
 				50834698183B761900918420 /* UIKit.framework */,
@@ -156,8 +160,6 @@
 				508346A3183B761900918420 /* AppDelegate.h */,
 				508346A4183B761900918420 /* AppDelegate.m */,
 				508346A6183B761900918420 /* Main.storyboard */,
-				508346A9183B761900918420 /* ViewController.h */,
-				508346AA183B761900918420 /* ViewController.m */,
 				508346AC183B761900918420 /* Images.xcassets */,
 				5083469B183B761900918420 /* Supporting Files */,
 				5066B3EC183B7F3000B596DC /* LoginViewController.h */,
@@ -166,6 +168,8 @@
 				5066B3F3183B870F00B596DC /* UsersTableViewController.m */,
 				50715DC5183BAC0C00BAD71D /* PhotosCollectionViewController.h */,
 				50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */,
+				50A10DF2183C8F3600A2982D /* MapViewController.h */,
+				50A10DF3183C8F3600A2982D /* MapViewController.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -349,14 +353,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5066B3FB183B8A2900B596DC /* InstaApiTags.m in Sources */,
+				5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */,
 				5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */,
 				5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */,
-				5066B3FA183B8A2900B596DC /* InstaApi.m in Sources */,
-				508346AB183B761900918420 /* ViewController.m in Sources */,
+				5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */,
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
 				50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */,
 				50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */,
+				50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
 			);

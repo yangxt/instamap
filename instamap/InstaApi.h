@@ -1,28 +1,36 @@
 //
-//  InstaApi.h
+//  InstaApiTags.h
 //  invite
 //
-//  Created by a я on 13.09.13.
+//  Created by a я on 16.09.13.
 //  Copyright (c) 2013 zhorkov023. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-#import <AFHTTPSessionManager.h>
+@interface InstaApi : NSObject
 
-extern NSString * const kInstagramBaseURLString;
-extern NSString * const kClientId;
-extern NSString * const kRedirectUrl;
+@property (nonatomic, strong) NSString* thumbnailUrl;
+@property (nonatomic, strong) NSString* standardUrl;
+@property (nonatomic, assign) NSUInteger likes;
+@property (nonatomic, assign) NSUInteger comments;
+@property (nonatomic, strong) NSString* index;
 
-// Endpoints
-extern NSString * const kAuthenticationEndpoint;
-extern NSString * const kRecentTags;
-extern NSString * const kUserSearch;
-extern NSString * const kUserMedia;
+@property (nonatomic, strong) NSString* username;
+@property (nonatomic, strong) NSString* userpic;
 
-@interface InstaApi : AFHTTPSessionManager
+@property (nonatomic, strong) NSString* max_id;
+@property (nonatomic, strong) NSString* min_id;
 
-+ (InstaApi *)sharedClient;
-- (id)initWithBaseURL:(NSURL *)url;
+@property (nonatomic, strong) NSString* latitude;
+@property (nonatomic, strong) NSString* longitude;
+@property (nonatomic, strong) NSString* locationName;
+@property (nonatomic, strong) NSString* createdTime;
+
++ (void)searchUser:(NSString *)username withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
+
++ (void)mediaFromUser:(NSString*)userid withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block;
++ (void)mediaFromUser:(NSString*)userid afterMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
++ (void)mediaFromUser:(NSString*)userid beforeMinId:(NSString *)minid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 
 @end
