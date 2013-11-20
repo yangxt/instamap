@@ -98,4 +98,11 @@
     [[self class] sendRequestWithPath:url andParam:params andBlock:block];
 }
 
++ (void)searchLocationByLat:(NSString*)lat andLng:(NSString *)lng withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: lat, lng, accessToken, nil] forKeys:[NSArray arrayWithObjects: @"lat", @"lng", @"access_token", nil]];
+    
+    [[self class] sendRequestWithPath:kLocationSearch andParam:params andBlock:block];
+}
+
 @end

@@ -31,6 +31,9 @@
 		50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF0183BE5D400A2982D /* SAMCache.m */; };
 		50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF3183C8F3600A2982D /* MapViewController.m */; };
 		50A10DF6183C926D00A2982D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A10DF5183C926D00A2982D /* MapKit.framework */; };
+		50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C62119183D062400093DF4 /* MapSearchViewController.m */; };
+		50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211C183D064300093DF4 /* PlacesViewController.m */; };
+		50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211F183D07A400093DF4 /* MyAnnotation.m */; };
 		8ED8658130D3450EA9084629 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1A60CD9F2C4B9D955F05B5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,12 @@
 		50A10DF2183C8F3600A2982D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		50A10DF3183C8F3600A2982D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		50A10DF5183C926D00A2982D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		50C62118183D062400093DF4 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
+		50C62119183D062400093DF4 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
+		50C6211B183D064300093DF4 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
+		50C6211C183D064300093DF4 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
+		50C6211E183D07A400093DF4 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
+		50C6211F183D07A400093DF4 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 		DA1A60CD9F2C4B9D955F05B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -178,6 +187,12 @@
 				50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */,
 				50A10DF2183C8F3600A2982D /* MapViewController.h */,
 				50A10DF3183C8F3600A2982D /* MapViewController.m */,
+				50C62118183D062400093DF4 /* MapSearchViewController.h */,
+				50C62119183D062400093DF4 /* MapSearchViewController.m */,
+				50C6211B183D064300093DF4 /* PlacesViewController.h */,
+				50C6211C183D064300093DF4 /* PlacesViewController.m */,
+				50C6211E183D07A400093DF4 /* MyAnnotation.h */,
+				50C6211F183D07A400093DF4 /* MyAnnotation.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -361,9 +376,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */,
+				50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */,
 				5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */,
 				5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */,
 				5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */,
+				50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */,
 				5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */,
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
 				50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */,

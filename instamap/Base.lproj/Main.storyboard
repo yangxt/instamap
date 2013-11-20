@@ -51,6 +51,68 @@
             </objects>
             <point key="canvasLocation" x="-166" y="181"/>
         </scene>
+        <!--Map Search View Controller - Map Search-->
+        <scene sceneID="pkm-vb-Xdn">
+            <objects>
+                <viewController id="jgB-wO-3P9" customClass="MapSearchViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nwm-2j-aka">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Pi5-r1-TIU">
+                                <rect key="frame" x="0.0" y="65" width="320" height="415"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jgB-wO-3P9" id="04I-Dx-9w0"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map Search" id="Npk-Sb-HYN">
+                        <barButtonItem key="rightBarButtonItem" title="Places" id="XaK-V2-mLA">
+                            <connections>
+                                <segue destination="70d-gJ-9rP" kind="push" identifier="places" id="a9C-kL-l0S"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="Pi5-r1-TIU" id="J8J-EV-0tg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLt-iY-Fcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="-806"/>
+        </scene>
+        <!--Places View Controller - Places-->
+        <scene sceneID="hwF-iy-mdG">
+            <objects>
+                <tableViewController id="70d-gJ-9rP" customClass="PlacesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fra-X2-I2F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlacesCell" id="gj9-1Y-adC">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gj9-1Y-adC" id="M1Z-5l-d3L">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="70d-gJ-9rP" id="zjn-zY-n6Y"/>
+                            <outlet property="delegate" destination="70d-gJ-9rP" id="9sd-lx-LEZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Places" id="SJV-cl-1Wf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UmO-Di-nsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1585" y="-806"/>
+        </scene>
         <!--Users Table View Controller - Users-->
         <scene sceneID="RTW-zf-hwn">
             <objects>
@@ -108,6 +170,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="lyK-F3-cGT">
                             <connections>
                                 <segue destination="Qxe-ta-0xr" kind="modal" identifier="logout" id="YE4-m3-ZZi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="zW5-2y-Plw">
+                            <connections>
+                                <segue destination="jgB-wO-3P9" kind="push" identifier="map2" id="gGM-Me-OH2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -225,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UY9-Kb-2Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813" y="-388"/>
+            <point key="canvasLocation" x="1857" y="182"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -18,6 +18,7 @@ NSString * const kRedirectUrl = @"http://instagram.com/";
 NSString * const kRecentTags = @"tags/%@/media/recent";
 NSString * const kUserSearch = @"users/search";
 NSString * const kUserMedia = @"users/%@/media/recent";
+NSString * const kLocationSearch = @"locations/search";
 
 NSString * const kAuthenticationEndpoint =
 @"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&scope=likes";
