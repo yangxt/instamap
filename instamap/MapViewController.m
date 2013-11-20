@@ -9,10 +9,13 @@
 #import "MapViewController.h"
 #import <JPSThumbnailAnnotation.h>
 
-
 @interface MapViewController ()
 {
 }
+
+@property (strong, nonatomic) MKPolyline *routeLine;
+@property (strong, nonatomic) MKPolylineView *routeLineView;
+
 @end
 
 @implementation MapViewController
@@ -31,15 +34,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    CLLocationCoordinate2D coordinateArray[[self.thumbnails count]];
+    
     if([self.thumbnails count] > 0)
     {
-        for(JPSThumbnail *thumbnail in self.thumbnails)
+        for(int i=0; i<[self.thumbnails count]; i++)
         {
+            JPSThumbnail *thumbnail = [self.thumbnails objectAtIndex:i];
+            coordinateArray[i] = [thumbnail coordinate];
             thumbnail.disclosureBlock = ^{ [self pinInfo]; };
             [self.mapView addAnnotation:[[JPSThumbnailAnnotation alloc] initWithThumbnail:thumbnail]];
         }
     
         [self.mapView setCenterCoordinate:[[self.thumbnails objectAtIndex:0] coordinate] animated:YES];
+        
+        
+        self.routeLine = [MKPolyline polylineWithCoordinates:coordinateArray count:[self.thumbnails count]];
+        [self.mapView addOverlay:self.routeLine];
     }
 }
 
@@ -73,5 +84,19 @@
     return nil;
 }
 
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay{
+    if(overlay == self.routeLine)
+    {
+        if(nil == self.routeLineView)
+        {
+            self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
+            self.routeLineView.fillColor = [UIColor redColor];
+            self.routeLineView.strokeColor = [UIColor redColor];
+            self.routeLineView.lineWidth = 5;
+        }
+        return self.routeLineView;
+    }
+    return nil;
+}
 
 @end
