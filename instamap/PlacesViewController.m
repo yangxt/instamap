@@ -8,6 +8,7 @@
 
 #import "PlacesViewController.h"
 #import "InstaApi.h"
+#import "PlaceImagesViewController.h"
 
 @interface PlacesViewController ()
 {
@@ -40,8 +41,10 @@
     [InstaApi searchLocationByLat:self.lat andLng:self.lng withAccessToken:accessToken block:^(NSArray *records) {
         
         if (records.count == 0)
+        {
+            NSLog(@"Where is no places");
             return;
-        
+        }
         places = [[NSMutableArray alloc]initWithArray:records];
         //        [cache removeAllObjects];
         NSLog(@"get it");
@@ -78,61 +81,31 @@
     static NSString *CellIdentifier = @"PlacesCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [places [indexPath.row] index];
-    // Configure the cell...
+    cell.textLabel.text = [places [indexPath.row] locationName2];
+    cell.detailTextLabel.text = [places [indexPath.row] index];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if ([[segue identifier] isEqualToString:@"PlaceImages"])
+    {
+        NSString *locationId = [places [[self.tableView indexPathForCell:sender].row] index];
+        PlaceImagesViewController *placeimages = [segue destinationViewController];
+        [placeimages setLocationId:locationId];
+        [placeimages setLocationIdArray:nil];
+    }
+    if ([[segue identifier] isEqualToString:@"AllPlaces"])
+    {
+        NSMutableArray *locationIds = [NSMutableArray array];
+        for(int i=0;i<[places count];i++)
+        {
+            [locationIds addObject:[places[i] index]];
+        }
+        PlaceImagesViewController *placeimages = [segue destinationViewController];
+        [placeimages setLocationIdArray:locationIds];
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

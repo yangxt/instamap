@@ -23,6 +23,7 @@
     self.username = [attributes valueForKeyPath:@"username"];
     self.userpic = [attributes valueForKeyPath:@"profile_picture"];
     self.index = [attributes valueForKeyPath:@"id"];
+    self.locationName2 = [attributes valueForKeyPath:@"name"];
   
     self.max_id = [pagination objectForKey:@"next_max_tag_id"];
     self.min_id = [pagination objectForKey:@"min_tag_id"];
@@ -103,6 +104,15 @@
     NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: lat, lng, accessToken, nil] forKeys:[NSArray arrayWithObjects: @"lat", @"lng", @"access_token", nil]];
     
     [[self class] sendRequestWithPath:kLocationSearch andParam:params andBlock:block];
+}
+
++ (void)mediaFromLocation:(NSString*)locationId withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: accessToken, nil] forKeys:[NSArray arrayWithObjects: @"access_token", nil]];
+    
+    NSString *url = [NSString stringWithFormat:kLocationMedia, locationId];
+    
+    [[self class] sendRequestWithPath:url andParam:params andBlock:block];
 }
 
 @end

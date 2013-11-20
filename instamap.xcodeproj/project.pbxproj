@@ -34,6 +34,7 @@
 		50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C62119183D062400093DF4 /* MapSearchViewController.m */; };
 		50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211C183D064300093DF4 /* PlacesViewController.m */; };
 		50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211F183D07A400093DF4 /* MyAnnotation.m */; };
+		50C62123183D274600093DF4 /* PlaceImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C62122183D274600093DF4 /* PlaceImagesViewController.m */; };
 		8ED8658130D3450EA9084629 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1A60CD9F2C4B9D955F05B5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		50C6211C183D064300093DF4 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		50C6211E183D07A400093DF4 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		50C6211F183D07A400093DF4 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
+		50C62121183D274600093DF4 /* PlaceImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceImagesViewController.h; sourceTree = "<group>"; };
+		50C62122183D274600093DF4 /* PlaceImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceImagesViewController.m; sourceTree = "<group>"; };
 		DA1A60CD9F2C4B9D955F05B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -193,6 +196,8 @@
 				50C6211C183D064300093DF4 /* PlacesViewController.m */,
 				50C6211E183D07A400093DF4 /* MyAnnotation.h */,
 				50C6211F183D07A400093DF4 /* MyAnnotation.m */,
+				50C62121183D274600093DF4 /* PlaceImagesViewController.h */,
+				50C62122183D274600093DF4 /* PlaceImagesViewController.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
 				50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */,
 				50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */,
+				50C62123183D274600093DF4 /* PlaceImagesViewController.m in Sources */,
 				50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,

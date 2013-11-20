@@ -20,6 +20,7 @@ extern NSString * const kRecentTags;
 extern NSString * const kUserSearch;
 extern NSString * const kUserMedia;
 extern NSString * const kLocationSearch;
+extern NSString * const kLocationMedia;
 
 @interface InstaClient : AFHTTPSessionManager
 

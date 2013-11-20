@@ -31,10 +31,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    droppedAt = CLLocationCoordinate2DMake(55.734646, 37.585730);
     
-    [self.mapView setCenterCoordinate:self.mapView.centerCoordinate animated:YES];
+    [self.mapView setCenterCoordinate:droppedAt animated:YES];
     
-    MyAnnotation *myPin = [[MyAnnotation alloc] initWithCoordinate:self.mapView.centerCoordinate];
+    MyAnnotation *myPin = [[MyAnnotation alloc] initWithCoordinate:droppedAt];
     
     [self.mapView addAnnotation:myPin];
 }

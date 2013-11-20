@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString* latitude;
 @property (nonatomic, strong) NSString* longitude;
 @property (nonatomic, strong) NSString* locationName;
+@property (nonatomic, strong) NSString* locationName2;
 @property (nonatomic, strong) NSString* createdTime;
 
 + (void)searchUser:(NSString *)username withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
@@ -34,5 +35,6 @@
 + (void)mediaFromUser:(NSString*)userid beforeMinId:(NSString *)minid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 
 + (void)searchLocationByLat:(NSString*)lat andLng:(NSString *)lng withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
++ (void)mediaFromLocation:(NSString*)locationId withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 
 @end
