@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="pRu-Kh-l9B">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="23" width="320" height="457"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -104,7 +104,13 @@
                             <outlet property="delegate" destination="04U-qa-00i" id="8Aw-8b-tFo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="67W-Oh-0na"/>
+                    <navigationItem key="navigationItem" title="Users" id="67W-Oh-0na">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="lyK-F3-cGT">
+                            <connections>
+                                <segue destination="Qxe-ta-0xr" kind="modal" identifier="logout" id="YE4-m3-ZZi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRo-9O-qLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

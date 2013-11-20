@@ -147,6 +147,10 @@
         PhotosCollectionViewController *photos = [segue destinationViewController];
         [photos setUserId:userId];
     }
+    if([[segue identifier] isEqualToString:@"logout"])
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Access_token"];
+    }
 }
 
 
