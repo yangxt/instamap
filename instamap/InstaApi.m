@@ -23,6 +23,7 @@
     self.username = [attributes valueForKeyPath:@"username"];
     self.userpic = [attributes valueForKeyPath:@"profile_picture"];
     self.index = [attributes valueForKeyPath:@"id"];
+    self.userid = [[attributes valueForKey:@"user"] valueForKey:@"username"];//hell
     self.locationName2 = [attributes valueForKeyPath:@"name"];
   
     self.max_id = [pagination objectForKey:@"next_max_tag_id"];
@@ -65,8 +66,18 @@
 {
     NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: username, accessToken, nil]
                                                        forKeys:[NSArray arrayWithObjects: @"q", @"access_token", nil]];
-
+    
     [[self class] sendRequestWithPath:kUserSearch andParam:params andBlock:block];
+}
+
++ (void)searchUserId:(NSString*)userid withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"access_token", nil]];
+    
+    NSString *url = [NSString stringWithFormat:kUserId, userid];
+    //problem with this method
+    [[self class] sendRequestWithPath:url andParam:params andBlock:block];
 }
 
 + (void)mediaFromUser:(NSString*)userid withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UsersTableViewController : UITableViewController <UISearchBarDelegate>
+@interface UsersTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSMutableArray *userIdArray;
 
 @end

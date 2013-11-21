@@ -9,6 +9,7 @@
 #import "PlaceImagesViewController.h"
 #import "InstaApi.h"
 #import "SAMCache.h"
+#import "UsersTableViewController.h"
 
 @interface PlaceImagesViewController ()
 {
@@ -58,6 +59,7 @@
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil){
         NSLog(@"accessToken == nil");
+        return;
     }
     
     [self refresh];
@@ -66,8 +68,6 @@
 
 - (void)refresh
 {
-    self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
-    if(self.accessToken == nil) return;
     if([self.locationIdArray count]==0)
     {
         [InstaApi mediaFromLocation:self.locationId withAccessToken:self.accessToken block:^(NSArray *records) {
@@ -207,6 +207,21 @@
     
     return cell;
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"users"])
+    {
+        NSMutableArray *userIds = [NSMutableArray array];
+        for(int i=0;i<[self.images count];i++)
+        {
+            if (![userIds containsObject:[self.images[i] userid]])
+                [userIds addObject:[self.images[i] userid]];
+        }
+        UsersTableViewController *users = [segue destinationViewController];
+        [users setUserIdArray:userIds];
+    }
 }
 
 @end

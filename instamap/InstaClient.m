@@ -17,6 +17,7 @@ NSString * const kRedirectUrl = @"http://instagram.com/";
 // Endpoints
 NSString * const kRecentTags = @"tags/%@/media/recent";
 NSString * const kUserSearch = @"users/search";
+NSString * const kUserId = @"users/%@";
 NSString * const kUserMedia = @"users/%@/media/recent";
 NSString * const kLocationSearch = @"locations/search";
 NSString * const kLocationMedia = @"locations/%@/media/recent";

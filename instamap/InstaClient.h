@@ -18,6 +18,7 @@ extern NSString * const kRedirectUrl;
 extern NSString * const kAuthenticationEndpoint;
 extern NSString * const kRecentTags;
 extern NSString * const kUserSearch;
+extern NSString * const kUserId;
 extern NSString * const kUserMedia;
 extern NSString * const kLocationSearch;
 extern NSString * const kLocationMedia;

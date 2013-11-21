@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Qxe-ta-0xr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Qxe-ta-0xr">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -16,12 +16,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="04U-qa-00i" kind="relationship" relationship="rootViewController" id="F7T-Os-fYt"/>
+                        <segue destination="jgB-wO-3P9" kind="relationship" relationship="rootViewController" id="HuY-XO-EOc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dc-31-prA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="182"/>
+            <point key="canvasLocation" x="390" y="-807"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="h8q-4P-dJL">
@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvo-8b-Kgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-166" y="181"/>
+            <point key="canvasLocation" x="-52" y="-808"/>
         </scene>
         <!--Map Search View Controller - Map Search-->
         <scene sceneID="pkm-vb-Xdn">
@@ -70,6 +70,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map Search" id="Npk-Sb-HYN">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="idv-Ua-uq8">
+                            <connections>
+                                <segue destination="Qxe-ta-0xr" kind="modal" identifier="logout" id="PvZ-3n-7EA"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Places" id="XaK-V2-mLA">
                             <connections>
                                 <segue destination="70d-gJ-9rP" kind="push" identifier="places" id="a9C-kL-l0S"/>
@@ -141,7 +146,6 @@
         <!--Place Images View Controller - PlaceImages-->
         <scene sceneID="eNW-Vu-YBa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hUY-f6-rDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="IcX-eu-jLm" customClass="PlaceImagesViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="IBt-41-hsf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -174,8 +178,15 @@
                             <outlet property="delegate" destination="IcX-eu-jLm" id="Zqa-c7-3K0"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="PlaceImages" id="YsJ-vF-VhR"/>
+                    <navigationItem key="navigationItem" title="PlaceImages" id="YsJ-vF-VhR">
+                        <barButtonItem key="rightBarButtonItem" title="Users" id="XDw-mi-vME">
+                            <connections>
+                                <segue destination="04U-qa-00i" kind="push" identifier="users" id="Kh2-qQ-dHe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUY-f6-rDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2010" y="-806"/>
         </scene>
@@ -187,17 +198,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="iD7-8z-ccJ">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="04U-qa-00i" id="Axy-7u-zka"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" rowHeight="100" id="xQ8-4b-ytT">
-                                <rect key="frame" x="0.0" y="130" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQ8-4b-ytT" id="Z9a-TF-AF2">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
@@ -232,22 +235,11 @@
                             <outlet property="delegate" destination="04U-qa-00i" id="8Aw-8b-tFo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="67W-Oh-0na">
-                        <barButtonItem key="leftBarButtonItem" title="Log out" id="lyK-F3-cGT">
-                            <connections>
-                                <segue destination="Qxe-ta-0xr" kind="modal" identifier="logout" id="YE4-m3-ZZi"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="zW5-2y-Plw">
-                            <connections>
-                                <segue destination="jgB-wO-3P9" kind="push" identifier="map2" id="gGM-Me-OH2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Users" id="67W-Oh-0na"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRo-9O-qLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="181"/>
+            <point key="canvasLocation" x="2562" y="-807"/>
         </scene>
         <!--Photos Collection View Controller - Photos-->
         <scene sceneID="Ahq-dR-BIy">
@@ -331,7 +323,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1326" y="181"/>
+            <point key="canvasLocation" x="3134" y="-807"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="agu-dS-fD6">
@@ -358,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UY9-Kb-2Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="182"/>
+            <point key="canvasLocation" x="3665" y="-806"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

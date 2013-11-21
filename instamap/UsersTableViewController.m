@@ -50,8 +50,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-//    cache = [SAMCache sharedCache];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    if([self.users count]==0)
+        [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,37 +111,6 @@
 }
 
 
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    NSLog(@"search %@", searchBar.text);
-    
-    [searchBar resignFirstResponder];
-    
-    accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
-    if(accessToken == nil){
-        NSLog(@"accessToken == nil");
-    }
-
-    [self refresh:searchBar.text];
-}
-
-
-- (void)refresh:(NSString *)userName
-{
-    accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
-    if(accessToken == nil) return;
-    [InstaApi searchUser:userName withAccessToken:accessToken block:^(NSArray *records) {
-        
-        if (records.count == 0)
-            return;
-        
-        self.users = [[NSMutableArray alloc]initWithArray:records];
-//        [cache removeAllObjects];
-        NSLog(@"get it");
-        [self.tableView reloadData];
-    }];
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"usermedia"])
@@ -147,18 +119,48 @@
         PhotosCollectionViewController *photos = [segue destinationViewController];
         [photos setUserId:userId];
     }
-    if([[segue identifier] isEqualToString:@"logout"])
-    {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Access_token"];
-        
-        NSHTTPCookie *cookie;
-        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        for (cookie in [storage cookies]) {
-            [storage deleteCookie:cookie];
-        }
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
 }
+
+
+- (void)refresh
+{
+    accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
+    if(accessToken == nil) return;
+    if([self.userIdArray count]!=0)
+    {
+        self.users = [NSMutableArray array];
+        for(int i=0; i<[self.userIdArray count];i++)
+        {
+            [InstaApi searchUser:self.userIdArray[i] withAccessToken:accessToken block:^(NSArray *records) {
+                
+                if (records.count == 0)
+                {
+                    NSLog(@"where is no users");
+                    if(i == [self.userIdArray count]-1)
+                    {
+                        NSLog(@"reloaded");
+                        [self.tableView reloadData];
+                    }
+                    
+                }
+                else
+                {
+                    [self.users addObject:records[0]];
+                    
+                    NSLog(@"%d", self.users.count);
+                    if(i == [self.userIdArray count]-1)
+                    {
+                        NSLog(@"reloaded");
+                        [self.tableView reloadData];
+                    }
+                }
+            }];
+        }
+        
+    }
+    
+}
+
 
 
 @end

@@ -79,5 +79,16 @@ didChangeDragState:(MKAnnotationViewDragState)newState
         [places setLat:[NSString stringWithFormat:@"%f", droppedAt.latitude]];
         [places setLng:[NSString stringWithFormat:@"%f", droppedAt.longitude]];
     }
+    if([[segue identifier] isEqualToString:@"logout"])
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Access_token"];
+        
+        NSHTTPCookie *cookie;
+        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (cookie in [storage cookies]) {
+            [storage deleteCookie:cookie];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 @end

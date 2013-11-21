@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSString* username;
 @property (nonatomic, strong) NSString* userpic;
+@property (nonatomic, strong) NSString* userid;
 
 @property (nonatomic, strong) NSString* max_id;
 @property (nonatomic, strong) NSString* min_id;
@@ -36,5 +37,8 @@
 
 + (void)searchLocationByLat:(NSString*)lat andLng:(NSString *)lng withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 + (void)mediaFromLocation:(NSString*)locationId withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
+
+
++ (void)searchUserId:(NSString*)userid withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block;
 
 @end
