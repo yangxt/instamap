@@ -39,29 +39,29 @@
 
 + (void)sendRequestWithPath:(NSString *)path andParam:(NSDictionary *)params andBlock:(void (^)(NSArray *records))block
 {
-    [[InstaClient sharedClient] GET:path parameters:params
-                         success:^(NSURLSessionDataTask *operation, id responseObject) {
-                             if (responseObject==nil) [NSException raise:@"Запрос прошел, но картинки не пришли из за Afhttpclient" format:@"Что то с responseObject"];
-                             NSMutableArray *mutableRecords = [NSMutableArray array];
-                             NSDictionary* pdata = [responseObject objectForKey:@"pagination"];
-                             
-                             NSArray* data = [responseObject objectForKey:@"data"];
-                             for (NSDictionary* obj in data) {
-                                 InstaApi* tags = [[InstaApi alloc] initWithAttributes:obj andPagination:pdata];
-                                 [mutableRecords addObject:tags];
+    [[InstaClient sharedClient] getPath:path
+                          parameters:params
+                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                 if (responseObject==nil) [NSException raise:@"Запрос прошел, но картинки не пришли из за Afhttpclient" format:@"Что то с responseObject"];
+                                 NSMutableArray *mutableRecords = [NSMutableArray array];
+                                 NSDictionary* pdata = [responseObject objectForKey:@"pagination"];
+                                 
+                                 NSArray* data = [responseObject objectForKey:@"data"];
+                                 for (NSDictionary* obj in data) {
+                                     InstaApi* tags = [[InstaApi alloc] initWithAttributes:obj andPagination:pdata];
+                                     [mutableRecords addObject:tags];
+                                 }
+                                 if (block) {
+                                     block([NSArray arrayWithArray:mutableRecords]);
+                                 }
                              }
-                             if (block) {
-                                 block([NSArray arrayWithArray:mutableRecords]);
-                             }
-                         }
-                         failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                             NSLog(@"error: %@", error.localizedDescription);
-                             if (block) {
-                                 block([NSArray array]);
-                             }
-                         }];
+                             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                 NSLog(@"error: %@", error.localizedDescription);
+                                 if (block) {
+                                     block([NSArray array]);
+                                 }
+                             }];
 }
-
 + (void)searchUser:(NSString *)username withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
 {
     NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: username, accessToken, nil]

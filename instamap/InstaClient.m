@@ -34,6 +34,9 @@ NSString * const kAuthenticationEndpoint =
         return nil;
     }
     
+    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [self setDefaultHeader:@"Accept" value:@"application/json"];
+    
     return self;
 }
 
@@ -46,8 +49,9 @@ NSString * const kAuthenticationEndpoint =
         _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kInstagramBaseURLString]];
     });
     
-   return _sharedClient;
+    return _sharedClient;
 }
+
 
 
 @end
