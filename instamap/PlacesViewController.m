@@ -14,6 +14,8 @@
 {
     NSString *accessToken;
     NSMutableArray *places;
+    NSMutableArray *filteredPlacesArray;
+    NSIndexPath *selectedIndexPath;
 }
 
 @end
@@ -55,12 +57,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    filteredPlacesArray = [NSMutableArray arrayWithCapacity:[places count]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,39 +71,107 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [places count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [filteredPlacesArray count];
+    } else {
+        return [places count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"PlacesCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [places [indexPath.row] locationName2];
-    cell.detailTextLabel.text = [places [indexPath.row] index];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        cell.textLabel.text = [filteredPlacesArray [indexPath.row] locationName2];
+        cell.detailTextLabel.text = [filteredPlacesArray [indexPath.row] index];
+        
+    } else {
+        cell.textLabel.text = [places [indexPath.row] locationName2];
+        cell.detailTextLabel.text = [places [indexPath.row] index];
+    }
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    selectedIndexPath=indexPath;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"PlaceImages"])
-    {
-        NSString *locationId = [places [[self.tableView indexPathForCell:sender].row] index];
-        PlaceImagesViewController *placeimages = [segue destinationViewController];
-        [placeimages setLocationId:locationId];
-        [placeimages setLocationIdArray:nil];
-    }
-    if ([[segue identifier] isEqualToString:@"AllPlaces"])
-    {
-        NSMutableArray *locationIds = [NSMutableArray array];
-        for(int i=0;i<[places count];i++)
+    if ([self.searchDisplayController.searchBar.text length]!=0) {
+        if ([[segue identifier] isEqualToString:@"PlaceImages"])
         {
-            [locationIds addObject:[places[i] index]];
+            NSString *locationId = [filteredPlacesArray [selectedIndexPath.row] index];
+            PlaceImagesViewController *placeimages = [segue destinationViewController];
+            [placeimages setLocationId:locationId];
+            [placeimages setLocationIdArray:nil];
         }
-        PlaceImagesViewController *placeimages = [segue destinationViewController];
-        [placeimages setLocationIdArray:locationIds];
+        if ([[segue identifier] isEqualToString:@"AllPlaces"])
+        {
+            NSMutableArray *locationIds = [NSMutableArray array];
+            for(int i=0;i<[filteredPlacesArray count];i++)
+            {
+                [locationIds addObject:[filteredPlacesArray[i] index]];
+            }
+            PlaceImagesViewController *placeimages = [segue destinationViewController];
+            [placeimages setLocationIdArray:locationIds];
+        }
     }
+    else{
+        if ([[segue identifier] isEqualToString:@"PlaceImages"])
+        {
+            NSString *locationId = [places [[self.tableView indexPathForCell:sender].row] index];
+            PlaceImagesViewController *placeimages = [segue destinationViewController];
+            [placeimages setLocationId:locationId];
+            [placeimages setLocationIdArray:nil];
+        }
+        if ([[segue identifier] isEqualToString:@"AllPlaces"])
+        {
+            NSMutableArray *locationIds = [NSMutableArray array];
+            for(int i=0;i<[places count];i++)
+            {
+                [locationIds addObject:[places[i] index]];
+            }
+            PlaceImagesViewController *placeimages = [segue destinationViewController];
+            [placeimages setLocationIdArray:locationIds];
+        }
+    }
+}
+
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    [filteredPlacesArray removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.locationName2 contains[cd] %@",searchText];
+    filteredPlacesArray = [NSMutableArray arrayWithArray:[places filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    return YES;
+}
+
+//not hide navigationController
+-(void)viewWillLayoutSubviews
+{
+    if(self.searchDisplayController.isActive)
+    {
+        [UIView animateWithDuration:0.001 delay:0.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+            [self.navigationController setNavigationBarHidden:NO animated:NO];
+        }completion:nil];
+    }
+    [super viewWillLayoutSubviews];
 }
 
 @end

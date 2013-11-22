@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface PlacesViewController : UITableViewController
+@interface PlacesViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property(strong, nonatomic) NSString *lat;
 @property(strong, nonatomic) NSString *lng;
