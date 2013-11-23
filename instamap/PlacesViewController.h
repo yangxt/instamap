@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface PlacesViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface PlacesViewController : UITableViewController <UISearchBarDelegate>
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property(strong, nonatomic) NSString *lat;
 @property(strong, nonatomic) NSString *lng;
 @end

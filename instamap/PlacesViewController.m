@@ -15,7 +15,6 @@
     NSString *accessToken;
     NSMutableArray *places;
     NSMutableArray *filteredPlacesArray;
-    NSIndexPath *selectedIndexPath;
 }
 
 @end
@@ -32,8 +31,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    
-[self refresh];
+    if ([places count]==0)
+        [self refresh];
 }
 
 - (void)refresh
@@ -71,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if ([self.searchBar.text length]!=0) {
         return [filteredPlacesArray count];
     } else {
         return [places count];
@@ -83,7 +82,7 @@
     static NSString *CellIdentifier = @"PlacesCell";
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if ([self.searchBar.text length]!=0) {
         cell.textLabel.text = [filteredPlacesArray [indexPath.row] locationName2];
         cell.detailTextLabel.text = [filteredPlacesArray [indexPath.row] index];
         
@@ -95,16 +94,12 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    selectedIndexPath=indexPath;
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([self.searchDisplayController.searchBar.text length]!=0) {
+    if ([self.searchBar.text length]!=0) {
         if ([[segue identifier] isEqualToString:@"PlaceImages"])
         {
-            NSString *locationId = [filteredPlacesArray [selectedIndexPath.row] index];
+            NSString *locationId = [filteredPlacesArray [[self.tableView indexPathForCell:sender].row] index];
             PlaceImagesViewController *placeimages = [segue destinationViewController];
             [placeimages setLocationId:locationId];
             [placeimages setLocationIdArray:nil];
@@ -142,36 +137,22 @@
 }
 
 #pragma mark Content Filtering
--(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
     [filteredPlacesArray removeAllObjects];
     // Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.locationName2 contains[cd] %@",searchText];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.locationName2 contains[cd] %@",searchBar.text];
     filteredPlacesArray = [NSMutableArray arrayWithArray:[places filteredArrayUsingPredicate:predicate]];
+    
+    [self.searchBar resignFirstResponder];
+    [self.tableView reloadData];
 }
 
-#pragma mark - UISearchDisplayController Delegate Methods
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    [self filterContentForSearchText:searchString scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    return YES;
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    return YES;
-}
-
-//not hide navigationController
--(void)viewWillLayoutSubviews
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    if(self.searchDisplayController.isActive)
-    {
-        [UIView animateWithDuration:0.001 delay:0.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            [self.navigationController setNavigationBarHidden:NO animated:NO];
-        }completion:nil];
-    }
-    [super viewWillLayoutSubviews];
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    [self.tableView reloadData];
 }
 
 @end
