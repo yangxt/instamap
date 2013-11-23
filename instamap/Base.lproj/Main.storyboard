@@ -184,6 +184,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="Wxm-xX-vA5" kind="push" identifier="photo" id="nFD-OS-UhO"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -202,6 +205,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUY-f6-rDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2010" y="-806"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="so9-cP-46F">
+            <objects>
+                <viewController id="Wxm-xX-vA5" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OCK-aS-prY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" tag="401" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="rIL-Ew-XEa">
+                                <rect key="frame" x="0.0" y="96" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" tag="402" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jJ9-yA-lqb">
+                                <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bHG-bC-zDz">
+                                <rect key="frame" x="104" y="65" width="45" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Text">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Ox7-fN-oiW" kind="push" identifier="userprofile" id="jeF-pZ-wN8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nv2-tv-6h3"/>
+                    <connections>
+                        <outlet property="largeImage" destination="rIL-Ew-XEa" id="6Ps-4I-Lsj"/>
+                        <outlet property="userImage" destination="jJ9-yA-lqb" id="5Ga-P0-yqO"/>
+                        <outlet property="userName" destination="bHG-bC-zDz" id="JAn-bD-VWB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acv-HP-i4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2562" y="-215"/>
         </scene>
         <!--Users Table View Controller - Users-->
         <scene sceneID="RTW-zf-hwn">
@@ -372,6 +417,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="jeF-pZ-wN8"/>
         <segue reference="0e4-Gh-HDq"/>
     </inferredMetricsTieBreakers>
 </document>

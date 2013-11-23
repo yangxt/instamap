@@ -83,11 +83,11 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if ([self.searchBar.text length]!=0) {
-        cell.textLabel.text = [filteredPlacesArray [indexPath.row] locationName2];
+        cell.textLabel.text = [filteredPlacesArray [indexPath.row] name];
         cell.detailTextLabel.text = [filteredPlacesArray [indexPath.row] index];
         
     } else {
-        cell.textLabel.text = [places [indexPath.row] locationName2];
+        cell.textLabel.text = [places [indexPath.row] name];
         cell.detailTextLabel.text = [places [indexPath.row] index];
     }
     
@@ -141,7 +141,7 @@
 {
     [filteredPlacesArray removeAllObjects];
     // Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.locationName2 contains[cd] %@",searchBar.text];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[cd] %@",searchBar.text];
     filteredPlacesArray = [NSMutableArray arrayWithArray:[places filteredArrayUsingPredicate:predicate]];
     
     [self.searchBar resignFirstResponder];

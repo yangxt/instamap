@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0009AD311840C833005F0BA8 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009AD301840C833005F0BA8 /* PhotoViewController.m */; };
 		504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A930E183CBDAB00D0180D /* CoreImage.framework */; };
 		504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A9310183CBDEE00D0180D /* QuartzCore.framework */; };
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0009AD2F1840C833005F0BA8 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		0009AD301840C833005F0BA8 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		313410F97DF34B86BAFDA071 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		504A930E183CBDAB00D0180D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		504A9310183CBDEE00D0180D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -198,6 +201,8 @@
 				50C6211F183D07A400093DF4 /* MyAnnotation.m */,
 				50C62121183D274600093DF4 /* PlaceImagesViewController.h */,
 				50C62122183D274600093DF4 /* PlaceImagesViewController.m */,
+				0009AD2F1840C833005F0BA8 /* PhotoViewController.h */,
+				0009AD301840C833005F0BA8 /* PhotoViewController.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */,
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
 				50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */,
+				0009AD311840C833005F0BA8 /* PhotoViewController.m in Sources */,
 				50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */,
 				50C62123183D274600093DF4 /* PlaceImagesViewController.m in Sources */,
 				50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */,

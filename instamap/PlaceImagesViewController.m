@@ -10,6 +10,7 @@
 #import "InstaApi.h"
 #import "SAMCache.h"
 #import "UsersTableViewController.h"
+#import "PhotoViewController.h"
 
 @interface PlaceImagesViewController ()
 {
@@ -148,7 +149,7 @@
         cell = [[UICollectionViewCell alloc] init];
     }
     
-    NSString * url = [self.images[indexPath.row] thumbnailUrl];
+    NSString * url = [self.images[indexPath.row] imagesThumbnailUrl];
     self.ipByUrl[url] = indexPath;
     
     UIImageView * imageView = (id)[cell.contentView viewWithTag:300];
@@ -216,11 +217,20 @@
         NSMutableArray *userIds = [NSMutableArray array];
         for(int i=0;i<[self.images count];i++)
         {
-            if (![userIds containsObject:[self.images[i] userid]])
-                [userIds addObject:[self.images[i] userid]];
+            if (![userIds containsObject:[self.images[i] userUserName]])
+                [userIds addObject:[self.images[i] userUserName]];
         }
         UsersTableViewController *users = [segue destinationViewController];
         [users setUserIdArray:userIds];
+    }
+    if ([[segue identifier] isEqualToString:@"photo"])
+    {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        PhotoViewController *photo = [segue destinationViewController];
+        [photo setUserProfilePic:[self.images[indexPath.row] userUserPic]];
+        [photo setUserProfileName:[self.images[indexPath.row] userUserName]];
+        [photo setPhotoUrl:[self.images[indexPath.row] imagesStandardUrl]];
+        [photo setUserProfileId:[self.images[indexPath.row] userUserId]];
     }
 }
 

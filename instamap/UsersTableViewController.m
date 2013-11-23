@@ -84,13 +84,13 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-    NSString * url = [self.users[indexPath.row] userpic];
+    NSString * url = [self.users[indexPath.row] userPic];
     self.ipByUrl[url] = indexPath;
     
     UIImageView *imageView = (id)[cell.contentView viewWithTag:100];
     imageView.image = nil;
     UILabel *label1 = (id)[cell.contentView viewWithTag:101];
-    label1.text = [self.users[indexPath.row] username];
+    label1.text = [self.users[indexPath.row] userName];
     UILabel *label2 = (id)[cell.contentView viewWithTag:102];
     label2.text = [self.users[indexPath.row] index];
     

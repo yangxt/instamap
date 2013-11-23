@@ -16,21 +16,23 @@
     if (!self) {
         return nil;
     }
-    self.thumbnailUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"thumbnail"] valueForKeyPath:@"url"];
-    self.standardUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"standard_resolution"] valueForKeyPath:@"url"];
+    self.imagesThumbnailUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"thumbnail"] valueForKeyPath:@"url"];
+    self.imagesStandardUrl = [[[attributes valueForKeyPath:@"images"] valueForKeyPath:@"standard_resolution"] valueForKeyPath:@"url"];
 //    self.likes = [[[attributes objectForKey:@"likes"] valueForKey:@"count"] integerValue];
 //    self.comments = [[[attributes objectForKey:@"comments"] valueForKey:@"count"] integerValue];
-    self.username = [attributes valueForKeyPath:@"username"];
-    self.userpic = [attributes valueForKeyPath:@"profile_picture"];
+    self.userName = [attributes valueForKeyPath:@"username"];
+    self.userPic = [attributes valueForKeyPath:@"profile_picture"];
     self.index = [attributes valueForKeyPath:@"id"];
-    self.userid = [[attributes valueForKey:@"user"] valueForKey:@"username"];//hell
-    self.locationName2 = [attributes valueForKeyPath:@"name"];
+    self.userUserName = [[attributes valueForKey:@"user"] valueForKey:@"username"];
+    self.userUserPic = [[attributes valueForKey:@"user"] valueForKeyPath:@"profile_picture"];
+    self.userUserId = [[attributes valueForKey:@"user"] valueForKey:@"id"];
+    self.name = [attributes valueForKeyPath:@"name"];
   
     self.max_id = [pagination objectForKey:@"next_max_tag_id"];
     self.min_id = [pagination objectForKey:@"min_tag_id"];
     
-    self.latitude = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"latitude"];
-    self.longitude = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"longitude"];
+    self.locationLatitude = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"latitude"];
+    self.locationLongitude = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"longitude"];
     self.locationName = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"name"];
     self.createdTime = [attributes valueForKeyPath:@"created_time"];
     

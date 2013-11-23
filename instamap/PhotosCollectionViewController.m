@@ -132,7 +132,7 @@
         cell = [[UICollectionViewCell alloc] init];// dequeueReusableCellWithReuseIdentifier:simpleIdentifier forIndexPath:indexPath];
     }
     
-    NSString * url = [self.images[indexPath.row] thumbnailUrl];
+    NSString * url = [self.images[indexPath.row] imagesThumbnailUrl];
     self.ipByUrl[url] = indexPath;
     
     UIImageView * imageView = (id)[cell.contentView viewWithTag:200];
@@ -155,8 +155,8 @@
         UIImage * image = [UIImage imageWithData:data];
         [cache setImage:image forKey:url];
     
-        NSString *latitude = [self.images[indexPath.row] latitude];
-        NSString *longitude = [self.images[indexPath.row] longitude];
+        NSString *latitude = [self.images[indexPath.row] locationLatitude];
+        NSString *longitude = [self.images[indexPath.row] locationLongitude];
         if ((NSNull *) latitude != [NSNull null])
         {
             JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
@@ -252,11 +252,10 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"test");
     [self captureBlur];
 //    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
     
-    NSString *url = [self.images[indexPath.row] standardUrl];
+    NSString *url = [self.images[indexPath.row] imagesStandardUrl];
     UIImage *image = [cache imageForKey:url];
     if (image)
     {
@@ -265,7 +264,6 @@
     else
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.loading_urls addObject:url];
             NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
             UIImage * image = [UIImage imageWithData:data];
             [cache setImage:image forKey:url];

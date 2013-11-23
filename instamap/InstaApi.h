@@ -10,23 +10,25 @@
 
 @interface InstaApi : NSObject
 
-@property (nonatomic, strong) NSString* thumbnailUrl;
-@property (nonatomic, strong) NSString* standardUrl;
+@property (nonatomic, strong) NSString* imagesThumbnailUrl;
+@property (nonatomic, strong) NSString* imagesStandardUrl;
 @property (nonatomic, assign) NSUInteger likes;
 @property (nonatomic, assign) NSUInteger comments;
 @property (nonatomic, strong) NSString* index;
 
-@property (nonatomic, strong) NSString* username;
-@property (nonatomic, strong) NSString* userpic;
-@property (nonatomic, strong) NSString* userid;
+@property (nonatomic, strong) NSString* userName;
+@property (nonatomic, strong) NSString* userPic;
+@property (nonatomic, strong) NSString* userUserName;
+@property (nonatomic, strong) NSString* userUserPic;
+@property (nonatomic, strong) NSString* userUserId;
 
 @property (nonatomic, strong) NSString* max_id;
 @property (nonatomic, strong) NSString* min_id;
 
-@property (nonatomic, strong) NSString* latitude;
-@property (nonatomic, strong) NSString* longitude;
+@property (nonatomic, strong) NSString* locationLatitude;
+@property (nonatomic, strong) NSString* locationLongitude;
 @property (nonatomic, strong) NSString* locationName;
-@property (nonatomic, strong) NSString* locationName2;
+@property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* createdTime;
 
 + (void)searchUser:(NSString *)username withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
