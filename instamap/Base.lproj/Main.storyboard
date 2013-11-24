@@ -312,13 +312,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EdE-ZV-DFp">
                                     <size key="itemSize" width="100" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="85"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstaCell" id="O3B-Ra-Q54">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="85" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -334,27 +334,59 @@
                                         <size key="customSize" width="100" height="100"/>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileCell" id="v0W-Av-ZC3" customClass="PhotosCollectionReusableView">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="R5O-yG-4Kk">
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fL1-61-k5i">
+                                            <rect key="frame" x="93" y="13" width="207" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d4H-Cf-D3K">
+                                            <rect key="frame" x="93" y="52" width="70" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Follow">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="followUser:" destination="v0W-Av-ZC3" eventType="touchUpInside" id="LAi-Zp-Zx8"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <connections>
+                                        <outlet property="userName" destination="fL1-61-k5i" id="dNf-pN-Rda"/>
+                                        <outlet property="userPic" destination="R5O-yG-4Kk" id="IDo-P2-FAM"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="Ox7-fN-oiW" id="RZ7-SY-8gu"/>
                                     <outlet property="delegate" destination="Ox7-fN-oiW" id="jo2-jH-qzV"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" id="mTO-PB-PEj" userLabel="blurContainerView">
+                            <view contentMode="scaleToFill" id="mXS-tt-LNM" userLabel="blurContainerView">
                                 <rect key="frame" x="0.0" y="1" width="320" height="415"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="IrZ-FC-dmo" userLabel="transparentView">
+                                    <view contentMode="scaleToFill" id="CmY-TT-DQB" userLabel="transparentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="u4g-gU-82l">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="pbb-3u-DgV">
                                         <rect key="frame" x="10" y="44" width="300" height="300"/>
+                                        <gestureRecognizers/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="OQS-Nz-m57" appends="YES" id="tEA-9e-ndg"/>
+                                    <outletCollection property="gestureRecognizers" destination="pV2-Qb-95b" appends="YES" id="zKC-tx-ZW5"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -368,16 +400,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="blurContainerView" destination="mTO-PB-PEj" id="5pt-eK-IiS"/>
+                        <outlet property="blurContainerView" destination="mXS-tt-LNM" id="y9C-1H-9OM"/>
                         <outlet property="collectionView" destination="z7Q-nR-tVU" id="ViA-Xg-uw8"/>
-                        <outlet property="largeImage" destination="u4g-gU-82l" id="04B-nn-sG5"/>
-                        <outlet property="transparentView" destination="IrZ-FC-dmo" id="H3L-C6-GoS"/>
+                        <outlet property="largeImage" destination="pbb-3u-DgV" id="zco-do-3N7"/>
+                        <outlet property="transparentView" destination="CmY-TT-DQB" id="kxG-AE-PH4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ak8-JH-OAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="OQS-Nz-m57">
+                <tapGestureRecognizer id="pV2-Qb-95b">
                     <connections>
-                        <action selector="taped:" destination="Ox7-fN-oiW" id="tno-OJ-s8D"/>
+                        <action selector="taped:" destination="Ox7-fN-oiW" id="unb-KQ-E0a"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

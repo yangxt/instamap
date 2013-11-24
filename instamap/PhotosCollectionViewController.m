@@ -11,6 +11,7 @@
 #import "SAMCache.h"
 #import "MapViewController.h"
 #import <JPSThumbnail.h>
+#import "PhotosCollectionReusableView.h"
 
 @interface PhotosCollectionViewController ()
 {
@@ -70,14 +71,6 @@
     self.largeImage.layer.shadowOpacity = 0.41f;
     self.largeImage.layer.shadowRadius = 5.0f;
     
-    
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [UIColor orangeColor];
-    [refreshControl addTarget:self action:@selector(updatePhotos) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
-    [self.collectionView addSubview:self.refreshControl];
-    
-    
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil){
          NSLog(@"accessToken == nil");
@@ -128,9 +121,8 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:simpleIdentifier forIndexPath:indexPath];
     
-    if (cell == nil) {
-        cell = [[UICollectionViewCell alloc] init];// dequeueReusableCellWithReuseIdentifier:simpleIdentifier forIndexPath:indexPath];
-    }
+    if (cell == nil)
+        cell = [[UICollectionViewCell alloc] init];
     
     NSString * url = [self.images[indexPath.row] imagesThumbnailUrl];
     self.ipByUrl[url] = indexPath;
@@ -205,39 +197,6 @@
     
     return cell;
 
-}
-
--(void) updatePhotos
-{
-    NSLog(@"Top" );
-    
-    InstaApi *q =(InstaApi *)[self.images objectAtIndex:0];
-    
-    NSLog(@"min %@",q.index);
-    
-    [InstaApi mediaFromUser:self.userId beforeMinId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
-        
-        if (records.count == 0)
-            return;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.images insertObjects:records atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, records.count)]];
-            
-            NSMutableDictionary * dict = [NSMutableDictionary dictionary];
-            for (NSString * key in self.ipByUrl.keyEnumerator) {
-                dict[key] = [NSIndexPath indexPathForRow:[self.ipByUrl[key] row]+records.count
-                                               inSection:[self.ipByUrl[key] section]];
-            }
-            self.ipByUrl = dict;
-            
-            NSLog(@"%d", self.images.count);
-            [self.collectionView reloadData];
-            
-            [self.refreshControl endRefreshing];
-            
-        });
-    }];
-    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -316,5 +275,37 @@
         self.collectionView.alpha = 1.0;
     }];
     self.largeImage.image = nil;
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        PhotosCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"profileCell" forIndexPath:indexPath];
+
+        headerView.userName.text = self.userProfileName;
+
+        UIImage *image = [cache imageForKey:self.userProfilePic];
+        if (image)
+        {
+            headerView.userPic.image = image;
+        }
+        else
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.userProfilePic]];
+                UIImage * image = [UIImage imageWithData:data];
+                [cache setImage:image forKey:self.userProfilePic];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    headerView.userPic.image = image;
+                });
+            });
+        }
+        
+        reusableview = headerView;
+    }
+    
+    return reusableview;
 }
 @end

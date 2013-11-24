@@ -85,7 +85,9 @@
     if ([[segue identifier] isEqualToString:@"userprofile"])
     {
         PhotosCollectionViewController *photos = [segue destinationViewController];
-        [photos setUserId:self.userProfileId];
+        photos.userId = self.userProfileId;
+        photos.userProfileName = self.userProfileName;
+        photos.userProfilePic = self.userProfilePic;
     }
 }
 

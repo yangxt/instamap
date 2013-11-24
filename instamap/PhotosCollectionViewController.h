@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *transparentView;
 - (IBAction)taped:(id)sender;
 
+@property (strong, nonatomic) NSString *userProfilePic;
+@property (strong, nonatomic) NSString *userProfileName;
 @end

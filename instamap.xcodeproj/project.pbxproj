@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0009AD311840C833005F0BA8 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009AD301840C833005F0BA8 /* PhotoViewController.m */; };
+		0009AD34184221EC005F0BA8 /* PhotosCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */; };
 		504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A930E183CBDAB00D0180D /* CoreImage.framework */; };
 		504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A9310183CBDEE00D0180D /* QuartzCore.framework */; };
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		0009AD2F1840C833005F0BA8 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		0009AD301840C833005F0BA8 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		0009AD32184221EB005F0BA8 /* PhotosCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotosCollectionReusableView.h; path = ../PhotosCollectionReusableView.h; sourceTree = "<group>"; };
+		0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotosCollectionReusableView.m; path = ../PhotosCollectionReusableView.m; sourceTree = "<group>"; };
 		313410F97DF34B86BAFDA071 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		504A930E183CBDAB00D0180D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		504A9310183CBDEE00D0180D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -191,6 +194,8 @@
 				5066B3F3183B870F00B596DC /* UsersTableViewController.m */,
 				50715DC5183BAC0C00BAD71D /* PhotosCollectionViewController.h */,
 				50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */,
+				0009AD32184221EB005F0BA8 /* PhotosCollectionReusableView.h */,
+				0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */,
 				50A10DF2183C8F3600A2982D /* MapViewController.h */,
 				50A10DF3183C8F3600A2982D /* MapViewController.m */,
 				50C62118183D062400093DF4 /* MapSearchViewController.h */,
@@ -389,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0009AD34184221EC005F0BA8 /* PhotosCollectionReusableView.m in Sources */,
 				50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */,
 				50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */,
 				5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */,

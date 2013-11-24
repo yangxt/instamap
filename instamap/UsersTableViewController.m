@@ -115,9 +115,10 @@
 {
     if ([[segue identifier] isEqualToString:@"usermedia"])
     {
-        NSString *userId = [self.users[[self.tableView indexPathForCell:sender].row] index];
         PhotosCollectionViewController *photos = [segue destinationViewController];
-        [photos setUserId:userId];
+        photos.userId = [self.users[[self.tableView indexPathForCell:sender].row] index];
+        photos.userProfileName = [self.users[[self.tableView indexPathForCell:sender].row] userName];
+        photos.userProfilePic = [self.users[[self.tableView indexPathForCell:sender].row] userPic];
     }
 }
 
