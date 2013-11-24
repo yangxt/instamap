@@ -242,7 +242,7 @@
     //Get a UIImage from the UIView
     NSLog(@"blur capture");
     UIGraphicsBeginImageContext(self.collectionView.bounds.size);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [self.collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
