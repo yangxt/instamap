@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0009AD311840C833005F0BA8 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009AD301840C833005F0BA8 /* PhotoViewController.m */; };
 		0009AD34184221EC005F0BA8 /* PhotosCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */; };
+		0038BE6918423AEC0079B135 /* YaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6818423AEC0079B135 /* YaClient.m */; };
+		0038BE6C18423B1A0079B135 /* YaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6B18423B1A0079B135 /* YaApi.m */; };
 		504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A930E183CBDAB00D0180D /* CoreImage.framework */; };
 		504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A9310183CBDEE00D0180D /* QuartzCore.framework */; };
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
@@ -55,6 +57,10 @@
 		0009AD301840C833005F0BA8 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		0009AD32184221EB005F0BA8 /* PhotosCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotosCollectionReusableView.h; path = ../PhotosCollectionReusableView.h; sourceTree = "<group>"; };
 		0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotosCollectionReusableView.m; path = ../PhotosCollectionReusableView.m; sourceTree = "<group>"; };
+		0038BE6718423AEC0079B135 /* YaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaClient.h; sourceTree = "<group>"; };
+		0038BE6818423AEC0079B135 /* YaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaClient.m; sourceTree = "<group>"; };
+		0038BE6A18423B1A0079B135 /* YaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaApi.h; sourceTree = "<group>"; };
+		0038BE6B18423B1A0079B135 /* YaApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaApi.m; sourceTree = "<group>"; };
 		313410F97DF34B86BAFDA071 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		504A930E183CBDAB00D0180D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		504A9310183CBDEE00D0180D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -131,6 +137,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0038BE6618423AA40079B135 /* YaWork */ = {
+			isa = PBXGroup;
+			children = (
+				0038BE6718423AEC0079B135 /* YaClient.h */,
+				0038BE6818423AEC0079B135 /* YaClient.m */,
+				0038BE6A18423B1A0079B135 /* YaApi.h */,
+				0038BE6B18423B1A0079B135 /* YaApi.m */,
+			);
+			name = YaWork;
+			sourceTree = "<group>";
+		};
 		5066B3F5183B89EC00B596DC /* InstaWork */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +197,7 @@
 		5083469A183B761900918420 /* instamap */ = {
 			isa = PBXGroup;
 			children = (
+				0038BE6618423AA40079B135 /* YaWork */,
 				50A10DEE183BE58C00A2982D /* SAMCache */,
 				50A10DE8183BD08400A2982D /* NSData+AsyncCacher */,
 				5066B3F5183B89EC00B596DC /* InstaWork */,
@@ -400,6 +418,7 @@
 				5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */,
 				5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */,
 				5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */,
+				0038BE6C18423B1A0079B135 /* YaApi.m in Sources */,
 				50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */,
 				5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */,
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
@@ -408,6 +427,7 @@
 				50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */,
 				50C62123183D274600093DF4 /* PlaceImagesViewController.m in Sources */,
 				50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */,
+				0038BE6918423AEC0079B135 /* YaClient.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
 			);
