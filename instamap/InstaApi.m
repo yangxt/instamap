@@ -64,6 +64,7 @@
                                  }
                              }];
 }
+
 + (void)searchUser:(NSString *)username withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
 {
     NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: username, accessToken, nil]
@@ -127,5 +128,41 @@
     
     [[self class] sendRequestWithPath:url andParam:params andBlock:block];
 }
+
++ (void)getTag:(NSString*)tagname withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: tagname, accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"tag-name", @"access_token", nil]];
+    NSString *url = [NSString stringWithFormat:kRecentTags, tagname];
+    
+    [[self class] sendRequestWithPath:url andParam:params andBlock:block];
+}
+
++ (void)getTag:(NSString*)tagname afterMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: tagname, maxid, accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"tag-name", @"max_id", @"access_token", nil]];
+    NSString *url = [NSString stringWithFormat:kRecentTags, tagname];
+    
+    [[self class] sendRequestWithPath:url andParam:params andBlock:block];
+}
+
++ (void)getTag:(NSString*)tagname beforeMinId:(NSString *)minid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: tagname, minid, accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"tag-name", @"min_id", @"access_token", nil]];
+    NSString *url = [NSString stringWithFormat:kRecentTags, tagname];
+    
+    [[self class] sendRequestWithPath:url andParam:params andBlock:block];
+}
+
++ (void)searchTags:(NSString *)tag withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: tag, accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"q", @"access_token", nil]];
+    
+    [[self class] sendRequestWithPath:kTagsSearch andParam:params andBlock:block];
+}
+
 
 @end

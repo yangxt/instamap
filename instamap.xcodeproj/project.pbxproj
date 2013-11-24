@@ -13,6 +13,8 @@
 		0038BE6C18423B1A0079B135 /* YaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6B18423B1A0079B135 /* YaApi.m */; };
 		0038BE6F1842585C0079B135 /* SearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6E1842585B0079B135 /* SearchLocationViewController.m */; };
 		0038BE72184273B30079B135 /* SearchUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE71184273B30079B135 /* SearchUsersViewController.m */; };
+		0038BE7518429A540079B135 /* SearchTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE7418429A530079B135 /* SearchTagsViewController.m */; };
+		0038BE7818429DF60079B135 /* TagMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE7718429DF60079B135 /* TagMediaViewController.m */; };
 		504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A930E183CBDAB00D0180D /* CoreImage.framework */; };
 		504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A9310183CBDEE00D0180D /* QuartzCore.framework */; };
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
@@ -67,6 +69,10 @@
 		0038BE6E1842585B0079B135 /* SearchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchLocationViewController.m; sourceTree = "<group>"; };
 		0038BE70184273B30079B135 /* SearchUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUsersViewController.h; sourceTree = "<group>"; };
 		0038BE71184273B30079B135 /* SearchUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUsersViewController.m; sourceTree = "<group>"; };
+		0038BE7318429A530079B135 /* SearchTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTagsViewController.h; sourceTree = "<group>"; };
+		0038BE7418429A530079B135 /* SearchTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTagsViewController.m; sourceTree = "<group>"; };
+		0038BE7618429DF60079B135 /* TagMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagMediaViewController.h; sourceTree = "<group>"; };
+		0038BE7718429DF60079B135 /* TagMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagMediaViewController.m; sourceTree = "<group>"; };
 		313410F97DF34B86BAFDA071 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		504A930E183CBDAB00D0180D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		504A9310183CBDEE00D0180D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -236,6 +242,10 @@
 				0038BE6E1842585B0079B135 /* SearchLocationViewController.m */,
 				0038BE70184273B30079B135 /* SearchUsersViewController.h */,
 				0038BE71184273B30079B135 /* SearchUsersViewController.m */,
+				0038BE7318429A530079B135 /* SearchTagsViewController.h */,
+				0038BE7418429A530079B135 /* SearchTagsViewController.m */,
+				0038BE7618429DF60079B135 /* TagMediaViewController.h */,
+				0038BE7718429DF60079B135 /* TagMediaViewController.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -428,6 +438,7 @@
 				5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */,
 				0038BE6F1842585C0079B135 /* SearchLocationViewController.m in Sources */,
 				5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */,
+				0038BE7818429DF60079B135 /* TagMediaViewController.m in Sources */,
 				5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */,
 				0038BE6C18423B1A0079B135 /* YaApi.m in Sources */,
 				50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */,
@@ -442,6 +453,7 @@
 				0038BE72184273B30079B135 /* SearchUsersViewController.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
+				0038BE7518429A540079B135 /* SearchTagsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

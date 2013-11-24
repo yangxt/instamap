@@ -43,4 +43,9 @@
 
 + (void)searchUserId:(NSString*)userid withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block;
 
+
++ (void)getTag:(NSString*)tagname withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block;
++ (void)getTag:(NSString*)tagname afterMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
++ (void)getTag:(NSString*)tagname beforeMinId:(NSString *)minid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
++ (void)searchTags:(NSString *)tag withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 @end
