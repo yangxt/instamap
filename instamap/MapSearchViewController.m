@@ -10,8 +10,6 @@
 #import "MyAnnotation.h"
 #import "PlacesViewController.h"
 
-#import "YaApi.h"
-
 @interface MapSearchViewController ()
 {
     CLLocationCoordinate2D droppedAt;
@@ -33,30 +31,19 @@
 {
     [super viewDidLoad];
     
-//	// Do any additional setup after loading the view.
-//    droppedAt = CLLocationCoordinate2DMake(55.733771, 37.587937);
-//    
-//    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(droppedAt, 700, 700);
-//    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
-//    [self.mapView setRegion:adjustedRegion animated:YES];
-//    
-//    MyAnnotation *myPin = [[MyAnnotation alloc] initWithCoordinate:droppedAt];
-//    
-//    [self.mapView addAnnotation:myPin];
+	// Do any additional setup after loading the view.
+    if([self.latitude length] == 0 && [self.longitude length] == 0)
+        droppedAt = CLLocationCoordinate2DMake(55.733771, 37.587937);
+    else
+        droppedAt = CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]);
     
-    [YaApi searchGeocode:@"Тверская 6" block:^(NSArray *records) {
-        
-        if (records.count == 0)
-        {
-            NSLog(@"no");
-            
-        }
-        else
-        {
-            NSLog(@"yes");
-        }
-    }];
-
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(droppedAt, 700, 700);
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+    [self.mapView setRegion:adjustedRegion animated:YES];
+    
+    MyAnnotation *myPin = [[MyAnnotation alloc] initWithCoordinate:droppedAt];
+    
+    [self.mapView addAnnotation:myPin];
 }
 
 - (void)didReceiveMemoryWarning

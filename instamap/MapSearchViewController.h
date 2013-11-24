@@ -11,5 +11,6 @@
 
 @interface MapSearchViewController : UIViewController <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
+@property (strong, nonatomic) NSString* latitude;
+@property (strong, nonatomic) NSString* longitude;
 @end

@@ -11,6 +11,7 @@
 		0009AD34184221EC005F0BA8 /* PhotosCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */; };
 		0038BE6918423AEC0079B135 /* YaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6818423AEC0079B135 /* YaClient.m */; };
 		0038BE6C18423B1A0079B135 /* YaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6B18423B1A0079B135 /* YaApi.m */; };
+		0038BE6F1842585C0079B135 /* SearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BE6E1842585B0079B135 /* SearchLocationViewController.m */; };
 		504A930F183CBDAB00D0180D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A930E183CBDAB00D0180D /* CoreImage.framework */; };
 		504A9311183CBDEE00D0180D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A9310183CBDEE00D0180D /* QuartzCore.framework */; };
 		5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3ED183B7F3000B596DC /* LoginViewController.m */; };
@@ -61,6 +62,8 @@
 		0038BE6818423AEC0079B135 /* YaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaClient.m; sourceTree = "<group>"; };
 		0038BE6A18423B1A0079B135 /* YaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaApi.h; sourceTree = "<group>"; };
 		0038BE6B18423B1A0079B135 /* YaApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaApi.m; sourceTree = "<group>"; };
+		0038BE6D1842585B0079B135 /* SearchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchLocationViewController.h; sourceTree = "<group>"; };
+		0038BE6E1842585B0079B135 /* SearchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchLocationViewController.m; sourceTree = "<group>"; };
 		313410F97DF34B86BAFDA071 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		504A930E183CBDAB00D0180D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		504A9310183CBDEE00D0180D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -226,6 +229,8 @@
 				50C62122183D274600093DF4 /* PlaceImagesViewController.m */,
 				0009AD2F1840C833005F0BA8 /* PhotoViewController.h */,
 				0009AD301840C833005F0BA8 /* PhotoViewController.m */,
+				0038BE6D1842585B0079B135 /* SearchLocationViewController.h */,
+				0038BE6E1842585B0079B135 /* SearchLocationViewController.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */,
 				50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */,
 				5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */,
+				0038BE6F1842585C0079B135 /* SearchLocationViewController.m in Sources */,
 				5066B3EE183B7F3000B596DC /* LoginViewController.m in Sources */,
 				5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */,
 				0038BE6C18423B1A0079B135 /* YaApi.m in Sources */,
