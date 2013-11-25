@@ -23,6 +23,7 @@ extern NSString * const kUserId;
 extern NSString * const kUserMedia;
 extern NSString * const kLocationSearch;
 extern NSString * const kLocationMedia;
+extern NSString * const kSelfLiked;
 
 @interface InstaClient : AFHTTPClient
 

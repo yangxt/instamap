@@ -39,6 +39,8 @@
 		50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF0183BE5D400A2982D /* SAMCache.m */; };
 		50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF3183C8F3600A2982D /* MapViewController.m */; };
 		50A10DF6183C926D00A2982D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A10DF5183C926D00A2982D /* MapKit.framework */; };
+		50C1787B18435508005C0BD1 /* SelfCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1787A18435508005C0BD1 /* SelfCollectionViewController.m */; };
+		50C1787E18435542005C0BD1 /* SelfCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1787D18435542005C0BD1 /* SelfCollectionReusableView.m */; };
 		50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C62119183D062400093DF4 /* MapSearchViewController.m */; };
 		50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211C183D064300093DF4 /* PlacesViewController.m */; };
 		50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211F183D07A400093DF4 /* MyAnnotation.m */; };
@@ -110,6 +112,10 @@
 		50A10DF2183C8F3600A2982D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		50A10DF3183C8F3600A2982D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		50A10DF5183C926D00A2982D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		50C1787918435508005C0BD1 /* SelfCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfCollectionViewController.h; sourceTree = "<group>"; };
+		50C1787A18435508005C0BD1 /* SelfCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfCollectionViewController.m; sourceTree = "<group>"; };
+		50C1787C18435542005C0BD1 /* SelfCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfCollectionReusableView.h; sourceTree = "<group>"; };
+		50C1787D18435542005C0BD1 /* SelfCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfCollectionReusableView.m; sourceTree = "<group>"; };
 		50C62118183D062400093DF4 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
 		50C62119183D062400093DF4 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
 		50C6211B183D064300093DF4 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
@@ -222,10 +228,7 @@
 				5066B3ED183B7F3000B596DC /* LoginViewController.m */,
 				5066B3F2183B870F00B596DC /* UsersTableViewController.h */,
 				5066B3F3183B870F00B596DC /* UsersTableViewController.m */,
-				50715DC5183BAC0C00BAD71D /* PhotosCollectionViewController.h */,
-				50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */,
-				0009AD32184221EB005F0BA8 /* PhotosCollectionReusableView.h */,
-				0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */,
+				50C17878184354CC005C0BD1 /* photoscollection */,
 				50A10DF2183C8F3600A2982D /* MapViewController.h */,
 				50A10DF3183C8F3600A2982D /* MapViewController.m */,
 				50C62118183D062400093DF4 /* MapSearchViewController.h */,
@@ -246,6 +249,7 @@
 				0038BE7418429A530079B135 /* SearchTagsViewController.m */,
 				0038BE7618429DF60079B135 /* TagMediaViewController.h */,
 				0038BE7718429DF60079B135 /* TagMediaViewController.m */,
+				50C1787F18435549005C0BD1 /* selfcollection */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -295,6 +299,28 @@
 				50A10DF0183BE5D400A2982D /* SAMCache.m */,
 			);
 			name = SAMCache;
+			sourceTree = "<group>";
+		};
+		50C17878184354CC005C0BD1 /* photoscollection */ = {
+			isa = PBXGroup;
+			children = (
+				50715DC5183BAC0C00BAD71D /* PhotosCollectionViewController.h */,
+				50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */,
+				0009AD32184221EB005F0BA8 /* PhotosCollectionReusableView.h */,
+				0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */,
+			);
+			name = photoscollection;
+			sourceTree = "<group>";
+		};
+		50C1787F18435549005C0BD1 /* selfcollection */ = {
+			isa = PBXGroup;
+			children = (
+				50C1787918435508005C0BD1 /* SelfCollectionViewController.h */,
+				50C1787A18435508005C0BD1 /* SelfCollectionViewController.m */,
+				50C1787C18435542005C0BD1 /* SelfCollectionReusableView.h */,
+				50C1787D18435542005C0BD1 /* SelfCollectionReusableView.m */,
+			);
+			name = selfcollection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +469,7 @@
 				0038BE6C18423B1A0079B135 /* YaApi.m in Sources */,
 				50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */,
 				5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */,
+				50C1787E18435542005C0BD1 /* SelfCollectionReusableView.m in Sources */,
 				508346A5183B761900918420 /* AppDelegate.m in Sources */,
 				50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */,
 				0009AD311840C833005F0BA8 /* PhotoViewController.m in Sources */,
@@ -452,6 +479,7 @@
 				0038BE6918423AEC0079B135 /* YaClient.m in Sources */,
 				0038BE72184273B30079B135 /* SearchUsersViewController.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
+				50C1787B18435508005C0BD1 /* SelfCollectionViewController.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
 				0038BE7518429A540079B135 /* SearchTagsViewController.m in Sources */,
 			);

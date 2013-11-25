@@ -103,7 +103,7 @@
          }
          
          UIImageView * imageView = (id)[cell.contentView viewWithTag:100];
-         imageView.image =  [UIImage imageWithData:data];;
+         imageView.image =  [UIImage imageWithData:data];
          [self.ipByUrl removeObjectForKey:url];
      }];
     

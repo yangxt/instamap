@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) NSString* max_id;
 @property (nonatomic, strong) NSString* min_id;
+@property (nonatomic, strong) NSString* nextmaxlikeid;
 
 @property (nonatomic, strong) NSString* locationLatitude;
 @property (nonatomic, strong) NSString* locationLongitude;
@@ -48,4 +49,7 @@
 + (void)getTag:(NSString*)tagname afterMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 + (void)getTag:(NSString*)tagname beforeMinId:(NSString *)minid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 + (void)searchTags:(NSString *)tag withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
+
++ (void)mediaSelfLikedwithAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
++ (void)mediaSelfLikedFromMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 @end

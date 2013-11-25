@@ -30,6 +30,7 @@
   
     self.max_id = [pagination objectForKey:@"next_max_tag_id"];
     self.min_id = [pagination objectForKey:@"min_tag_id"];
+    self.nextmaxlikeid = [pagination objectForKey:@"next_max_like_id"];
     
     self.locationLatitude = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"latitude"];
     self.locationLongitude = [[attributes valueForKeyPath:@"location"] valueForKeyPath:@"longitude"];
@@ -65,6 +66,42 @@
                              }];
 }
 
+- (id)initWithAttributes:(NSArray *)attributes{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    self.userName = [attributes valueForKeyPath:@"username"];
+    self.userPic = [attributes valueForKeyPath:@"profile_picture"];
+    self.index = [attributes valueForKeyPath:@"id"];
+    
+    return self;
+}
+
++ (void)sendSimpleRequestWithPath:(NSString *)path andParam:(NSDictionary *)params andBlock:(void (^)(NSArray *records))block
+{
+    [[InstaClient sharedClient] getPath:path
+                             parameters:params
+                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                    if (responseObject==nil) [NSException raise:@"Запрос прошел, но картинки не пришли из за Afhttpclient" format:@"Что то с responseObject"];
+                                    NSMutableArray *mutableRecords = [NSMutableArray array];
+                                    
+                                    NSArray* data = [responseObject objectForKey:@"data"];
+                                    InstaApi* tags = [[InstaApi alloc] initWithAttributes:data];
+                                    [mutableRecords addObject:tags];
+                                    if (block) {
+                                        block([NSArray arrayWithArray:mutableRecords]);
+                                    }
+                                }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    NSLog(@"error: %@", error.localizedDescription);
+                                    if (block) {
+                                        block([NSArray array]);
+                                    }
+                                }];
+}
+
 + (void)searchUser:(NSString *)username withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
 {
     NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: username, accessToken, nil]
@@ -79,8 +116,7 @@
                                                        forKeys:[NSArray arrayWithObjects: @"access_token", nil]];
     
     NSString *url = [NSString stringWithFormat:kUserId, userid];
-    //problem with this method
-    [[self class] sendRequestWithPath:url andParam:params andBlock:block];
+    [[self class] sendSimpleRequestWithPath:url andParam:params andBlock:block];
 }
 
 + (void)mediaFromUser:(NSString*)userid withAccessToken:(NSString*)accessToken block:(void (^)(NSArray *records))block
@@ -164,5 +200,20 @@
     [[self class] sendRequestWithPath:kTagsSearch andParam:params andBlock:block];
 }
 
++ (void)mediaSelfLikedwithAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"access_token", nil]];
+    
+    [[self class] sendRequestWithPath:kSelfLiked andParam:params andBlock:block];
+}
+
++ (void)mediaSelfLikedFromMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: maxid, accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"max_like_id", @"access_token", nil]];
+    
+    [[self class] sendRequestWithPath:kSelfLiked andParam:params andBlock:block];
+}
 
 @end
