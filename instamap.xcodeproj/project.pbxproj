@@ -41,6 +41,7 @@
 		50A10DF6183C926D00A2982D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A10DF5183C926D00A2982D /* MapKit.framework */; };
 		50C1787B18435508005C0BD1 /* SelfCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1787A18435508005C0BD1 /* SelfCollectionViewController.m */; };
 		50C1787E18435542005C0BD1 /* SelfCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1787D18435542005C0BD1 /* SelfCollectionReusableView.m */; };
+		50C1788218438539005C0BD1 /* FollowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1788118438539005C0BD1 /* FollowTableViewController.m */; };
 		50C6211A183D062400093DF4 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C62119183D062400093DF4 /* MapSearchViewController.m */; };
 		50C6211D183D064300093DF4 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211C183D064300093DF4 /* PlacesViewController.m */; };
 		50C62120183D07A400093DF4 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C6211F183D07A400093DF4 /* MyAnnotation.m */; };
@@ -116,6 +117,8 @@
 		50C1787A18435508005C0BD1 /* SelfCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfCollectionViewController.m; sourceTree = "<group>"; };
 		50C1787C18435542005C0BD1 /* SelfCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfCollectionReusableView.h; sourceTree = "<group>"; };
 		50C1787D18435542005C0BD1 /* SelfCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfCollectionReusableView.m; sourceTree = "<group>"; };
+		50C1788018438539005C0BD1 /* FollowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewController.h; sourceTree = "<group>"; };
+		50C1788118438539005C0BD1 /* FollowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewController.m; sourceTree = "<group>"; };
 		50C62118183D062400093DF4 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
 		50C62119183D062400093DF4 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
 		50C6211B183D064300093DF4 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				0038BE7618429DF60079B135 /* TagMediaViewController.h */,
 				0038BE7718429DF60079B135 /* TagMediaViewController.m */,
 				50C1787F18435549005C0BD1 /* selfcollection */,
+				50C1788018438539005C0BD1 /* FollowTableViewController.h */,
+				50C1788118438539005C0BD1 /* FollowTableViewController.m */,
 			);
 			path = instamap;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				0038BE72184273B30079B135 /* SearchUsersViewController.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				50C1787B18435508005C0BD1 /* SelfCollectionViewController.m in Sources */,
+				50C1788218438539005C0BD1 /* FollowTableViewController.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
 				0038BE7518429A540079B135 /* SearchTagsViewController.m in Sources */,
 			);

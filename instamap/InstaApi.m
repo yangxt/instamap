@@ -21,6 +21,7 @@
 //    self.likes = [[[attributes objectForKey:@"likes"] valueForKey:@"count"] integerValue];
 //    self.comments = [[[attributes objectForKey:@"comments"] valueForKey:@"count"] integerValue];
     self.userName = [attributes valueForKeyPath:@"username"];
+    self.userFullName = [attributes valueForKeyPath:@"full_name"];
     self.userPic = [attributes valueForKeyPath:@"profile_picture"];
     self.index = [attributes valueForKeyPath:@"id"];
     self.userUserName = [[attributes valueForKey:@"user"] valueForKey:@"username"];
@@ -214,6 +215,14 @@
                                                        forKeys:[NSArray arrayWithObjects: @"max_like_id", @"access_token", nil]];
     
     [[self class] sendRequestWithPath:kSelfLiked andParam:params andBlock:block];
+}
+
++ (void)followedUserswithAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: accessToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects: @"access_token", nil]];
+    
+    [[self class] sendRequestWithPath:kSelfFollowed andParam:params andBlock:block];
 }
 
 @end

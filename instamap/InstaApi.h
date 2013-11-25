@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString* index;
 
 @property (nonatomic, strong) NSString* userName;
+@property (nonatomic, strong) NSString* userFullName;
 @property (nonatomic, strong) NSString* userPic;
 @property (nonatomic, strong) NSString* userUserName;
 @property (nonatomic, strong) NSString* userUserPic;
@@ -52,4 +53,6 @@
 
 + (void)mediaSelfLikedwithAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 + (void)mediaSelfLikedFromMaxId:(NSString *)maxid withAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
+
++ (void)followedUserswithAccessToken:(NSString *)accessToken block:(void (^)(NSArray *records))block;
 @end

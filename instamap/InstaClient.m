@@ -23,6 +23,7 @@ NSString * const kUserMedia = @"users/%@/media/recent";
 NSString * const kLocationSearch = @"locations/search";
 NSString * const kLocationMedia = @"locations/%@/media/recent";
 NSString * const kSelfLiked = @"users/self/media/liked";
+NSString * const kSelfFollowed = @"users/self/follows";
 
 NSString * const kAuthenticationEndpoint =
 @"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&scope=likes";

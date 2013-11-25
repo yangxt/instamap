@@ -1,17 +1,17 @@
 //
-//  SearchUsersViewController.m
+//  FollowTableViewController.m
 //  instamap
 //
-//  Created by a я on 24.11.13.
+//  Created by Andrei Rozhkov on 25.11.13.
 //  Copyright (c) 2013 Andrei Rozhkov. All rights reserved.
 //
 
-#import "SearchUsersViewController.h"
+#import "FollowTableViewController.h"
 #import "InstaApi.h"
 #import "PhotosCollectionViewController.h"
 #import "NSData+AsyncCacher.h"
 
-@interface SearchUsersViewController ()
+@interface FollowTableViewController ()
 {
     NSString *accessToken;
 }
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation SearchUsersViewController
+@implementation FollowTableViewController
 
 - (NSMutableSet *)loading_urls
 {
@@ -47,6 +47,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    if([self.users count]==0)
+        [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,7 +100,7 @@
          }
          
          UIImageView * imageView = (id)[cell.contentView viewWithTag:100];
-         imageView.image =  [UIImage imageWithData:data];;
+         imageView.image =  [UIImage imageWithData:data];
          [self.ipByUrl removeObjectForKey:url];
      }];
     
@@ -115,25 +120,27 @@
 }
 
 
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)refresh
 {
     accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(accessToken == nil) return;
-    [InstaApi searchUser:searchBar.text withAccessToken:accessToken block:^(NSArray *records) {
-        
+    [InstaApi followedUserswithAccessToken:accessToken block:^(NSArray *records)
+    {
+                
         if (records.count == 0)
             NSLog(@"where is no users");
         else
         {
-            self.users = [[NSMutableArray alloc] initWithArray:records];
-            
+            self.users = [NSMutableArray arrayWithArray:records];
+                    
+            NSLog(@"%d", self.users.count);
             NSLog(@"reloaded");
             [self.tableView reloadData];
+            
         }
     }];
-    
-    [searchBar resignFirstResponder];
 }
+        
 
 
 

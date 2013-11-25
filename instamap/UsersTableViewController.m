@@ -92,7 +92,7 @@
     UILabel *label1 = (id)[cell.contentView viewWithTag:101];
     label1.text = [self.users[indexPath.row] userName];
     UILabel *label2 = (id)[cell.contentView viewWithTag:102];
-    label2.text = [self.users[indexPath.row] index];
+    label2.text = [self.users[indexPath.row] userFullName];
     
     [NSData getDataFromURL:[NSURL URLWithString:url]
                              toBlock:^(NSData * data, BOOL * retry)
