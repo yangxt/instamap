@@ -16,6 +16,7 @@
 {
     SAMCache *cache;
     float minid;
+    BOOL isOnBottom;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -54,6 +55,7 @@
 	// Do any additional setup after loading the view.
     
     cache = [SAMCache sharedCache];
+    isOnBottom = YES;
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor orangeColor];
@@ -148,11 +150,40 @@
         });
     });
     
-    if(indexPath.row == self.images.count-5)
-    {
+//    if(indexPath.row == self.images.count-5)
+//    {
+//        NSLog(@"Bottom" );
+//        InstaApi *q =(InstaApi *)[self.images lastObject];
+//        NSLog(@"max %@",q.max_id);
+//        
+//        [InstaApi getTag:self.tag afterMaxId:q.max_id withAccessToken:self.accessToken block:^(NSArray *records) {
+//            
+//            if (records.count == 0)
+//                return;
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.images addObjectsFromArray:records];
+//                [self.collectionView reloadData];
+//                
+//            });
+//        }];
+//        
+//    }
+    
+    return cell;
+}
+- (void)scrollViewDidScroll: (UIScrollView *)scroll
+{
+    NSInteger currentOffset = scroll.contentOffset.y;
+    NSInteger maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= 150.0 && isOnBottom) {
         NSLog(@"Bottom" );
+        isOnBottom = NO;
         InstaApi *q =(InstaApi *)[self.images lastObject];
         NSLog(@"max %@",q.max_id);
+        if(!q.max_id)
+            return;
         
         [InstaApi getTag:self.tag afterMaxId:q.max_id withAccessToken:self.accessToken block:^(NSArray *records) {
             
@@ -161,14 +192,12 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.images addObjectsFromArray:records];
+                isOnBottom = YES;
                 [self.collectionView reloadData];
                 
             });
         }];
-        
     }
-    
-    return cell;
 }
 
 -(void) updatePhotos
