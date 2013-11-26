@@ -14,6 +14,7 @@
 @interface SearchUsersViewController ()
 {
     NSString *accessToken;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic, strong) NSMutableArray* users;
@@ -47,6 +48,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,6 +125,7 @@
     if(accessToken == nil) return;
     [InstaApi searchUser:searchBar.text withAccessToken:accessToken block:^(NSArray *records) {
         
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             NSLog(@"where is no users");
         else
@@ -132,7 +137,16 @@
         }
     }];
     
+    [activityIndicator startAnimating];
     [searchBar resignFirstResponder];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    self.users = nil;
+    [self.tableView reloadData];
 }
 
 

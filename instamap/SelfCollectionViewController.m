@@ -18,6 +18,7 @@
     SAMCache *cache;
     NSMutableArray *thumbnails;
     BOOL isOnBottom;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -61,11 +62,16 @@
     thumbnails = [NSMutableArray array];
     isOnBottom = YES;
     
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil){
         NSLog(@"accessToken == nil");
     }
     
+    [activityIndicator startAnimating];
     [self selfUserProfileLoad];
 }
 
@@ -92,6 +98,7 @@
     if(self.accessToken == nil) return;
     [InstaApi mediaSelfLikedwithAccessToken:self.accessToken block:^(NSArray *records) {
         
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             return;
         

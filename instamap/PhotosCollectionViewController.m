@@ -221,6 +221,7 @@
 {
     [self captureBlur];
 //    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
+    [self.activityIndicator startAnimating];
     
     NSString *url = [self.images[indexPath.row] imagesStandardUrl];
     UIImage *image = [cache imageForKey:url];
@@ -278,6 +279,7 @@
 
 - (void)hideLargeImage
 {
+    [self.activityIndicator stopAnimating];
     [UIView animateWithDuration:0.3 animations:^{
         self.blurContainerView.alpha = 0.0;
         self.collectionView.alpha = 1.0;

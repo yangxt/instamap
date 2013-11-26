@@ -86,6 +86,12 @@
     }];
 }
 
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    [self.tableView reloadData];
+}
 
 
 @end
