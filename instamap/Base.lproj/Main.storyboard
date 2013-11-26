@@ -103,7 +103,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" textLabel="rcm-Pv-6Ga" style="IBUITableViewCellStyleDefault" id="Npm-Ar-3tc">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" textLabel="rcm-Pv-6Ga" detailTextLabel="Nh7-jo-wOO" style="IBUITableViewCellStyleSubtitle" id="Npm-Ar-3tc">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Npm-Ar-3tc" id="BVd-Fs-hcU">
@@ -111,10 +111,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rcm-Pv-6Ga">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="2" width="36" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nh7-jo-wOO">
+                                            <rect key="frame" x="10" y="24" width="47" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -129,13 +136,10 @@
                             <outlet property="delegate" destination="isQ-Qs-0BE" id="5MG-pS-F7r"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="1om-sr-HKC">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="mpg-Rq-YB2">
-                            <connections>
-                                <segue destination="jgB-wO-3P9" kind="push" identifier="map" id="u2h-Bk-3HU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="1om-sr-HKC"/>
+                    <connections>
+                        <segue destination="jgB-wO-3P9" kind="push" identifier="map" id="N69-WQ-PYU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2U2-ph-Beu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,16 +196,10 @@
                             <outlet property="delegate" destination="70d-gJ-9rP" id="9sd-lx-LEZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Places" id="SJV-cl-1Wf">
-                        <barButtonItem key="rightBarButtonItem" title="All" id="Jpc-Hu-Vfn">
-                            <connections>
-                                <action selector="allTapped:" destination="70d-gJ-9rP" id="o9P-8b-uUZ"/>
-                                <segue destination="IcX-eu-jLm" kind="push" identifier="AllPlaces" id="TPR-jT-RQu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Places" id="SJV-cl-1Wf"/>
                     <connections>
                         <outlet property="searchBar" destination="qsd-CT-Y6P" id="4FB-lh-ndW"/>
+                        <segue destination="IcX-eu-jLm" kind="push" identifier="AllPlaces" id="D9N-XO-hiR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UmO-Di-nsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,13 +248,10 @@
                             <outlet property="delegate" destination="IcX-eu-jLm" id="Zqa-c7-3K0"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="PlaceImages" id="YsJ-vF-VhR">
-                        <barButtonItem key="rightBarButtonItem" title="Users" id="XDw-mi-vME">
-                            <connections>
-                                <segue destination="04U-qa-00i" kind="push" identifier="users" id="Kh2-qQ-dHe"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="PlaceImages" id="YsJ-vF-VhR"/>
+                    <connections>
+                        <segue destination="04U-qa-00i" kind="push" identifier="users" id="naF-nd-wCh"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUY-f6-rDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -541,19 +536,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Photos" id="uWi-sk-r0O">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="rHj-Br-45S">
-                            <connections>
-                                <segue destination="uBv-un-BNg" kind="push" identifier="map" id="AGx-1b-Sv0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Photos" id="uWi-sk-r0O"/>
                     <connections>
                         <outlet property="activityIndicator" destination="MAl-Qr-8xO" id="zEM-My-yFe"/>
+                        <outlet property="activityIndicatorCenter" destination="MAl-Qr-8xO" id="jj4-Hk-zKe"/>
                         <outlet property="blurContainerView" destination="mXS-tt-LNM" id="y9C-1H-9OM"/>
                         <outlet property="collectionView" destination="z7Q-nR-tVU" id="ViA-Xg-uw8"/>
                         <outlet property="largeImage" destination="pbb-3u-DgV" id="zco-do-3N7"/>
                         <outlet property="transparentView" destination="CmY-TT-DQB" id="kxG-AE-PH4"/>
+                        <segue destination="uBv-un-BNg" kind="push" identifier="map" id="Qzo-PF-AEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ak8-JH-OAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -950,10 +941,10 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hl7-nC-HlI"/>
-        <segue reference="zHj-4Z-PXc"/>
-        <segue reference="94X-f9-yrH"/>
-        <segue reference="0e4-Gh-HDq"/>
-        <segue reference="Kh2-qQ-dHe"/>
+        <segue reference="N69-WQ-PYU"/>
+        <segue reference="D9N-XO-hiR"/>
         <segue reference="nFD-OS-UhO"/>
+        <segue reference="naF-nd-wCh"/>
+        <segue reference="TnW-bm-rZc"/>
     </inferredMetricsTieBreakers>
 </document>

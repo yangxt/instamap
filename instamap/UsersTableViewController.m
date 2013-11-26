@@ -14,6 +14,7 @@
 @interface UsersTableViewController ()
 {
     NSString *accessToken;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic, strong) NSMutableArray* users;
@@ -50,9 +51,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-- (void)viewWillAppear:(BOOL)animated
-{
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
     if([self.users count]==0)
         [self refresh];
 }
@@ -130,6 +133,7 @@
     if([self.userIdArray count]!=0)
     {
         self.users = [NSMutableArray array];
+        [activityIndicator startAnimating];
         for(int i=0; i<[self.userIdArray count];i++)
         {
             [InstaApi searchUser:self.userIdArray[i] withAccessToken:accessToken block:^(NSArray *records) {
@@ -139,6 +143,7 @@
                     NSLog(@"where is no users");
                     if(i == [self.userIdArray count]-1)
                     {
+                        [activityIndicator stopAnimating];
                         NSLog(@"reloaded");
                         [self.tableView reloadData];
                     }
@@ -151,6 +156,7 @@
                     NSLog(@"%d", self.users.count);
                     if(i == [self.userIdArray count]-1)
                     {
+                        [activityIndicator stopAnimating];
                         NSLog(@"reloaded");
                         [self.tableView reloadData];
                     }

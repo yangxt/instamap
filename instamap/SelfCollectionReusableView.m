@@ -28,9 +28,5 @@
 }
 */
 
-- (IBAction)following:(id)sender {
-}
 
-- (IBAction)followed:(id)sender {
-}
 @end

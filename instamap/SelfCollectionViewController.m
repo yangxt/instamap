@@ -58,13 +58,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    cache = [SAMCache sharedCache];
-    thumbnails = [NSMutableArray array];
-    isOnBottom = YES;
-    
     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicator.hidesWhenStopped = YES;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
+    cache = [SAMCache sharedCache];
+    thumbnails = [NSMutableArray array];
+    isOnBottom = YES;
     
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil){

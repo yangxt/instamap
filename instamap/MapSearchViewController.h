@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSString* latitude;
 @property (strong, nonatomic) NSString* longitude;
+@property (strong, nonatomic) NSString* mytitle;
+@property (strong, nonatomic) NSString* mysubtitle;
 @end

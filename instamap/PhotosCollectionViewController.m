@@ -19,6 +19,7 @@
     NSMutableArray *thumbnails;
     UIImage *blurrredImage;
     BOOL isOnBottom;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -62,6 +63,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionLeft);
+    [self.view addGestureRecognizer:swipeGesture];
+    
     cache = [SAMCache sharedCache];
     thumbnails = [NSMutableArray array];
     isOnBottom = YES;
@@ -80,12 +90,18 @@
     
 }
 
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture {
+    NSLog(@"perform map");
+    [self performSegueWithIdentifier:@"map" sender:self];
+}
+
 - (void)refresh
 {
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil) return;
+    [activityIndicator startAnimating];
     [InstaApi mediaFromUser:self.userId withAccessToken:self.accessToken block:^(NSArray *records) {
-        
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             return;
         
@@ -192,9 +208,9 @@
         if(!q.index)
             return;
         isOnBottom = NO;
-        
+        [activityIndicator startAnimating];
         [InstaApi mediaFromUser:self.userId afterMaxId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
-            
+            [activityIndicator stopAnimating];
             if (records.count == 0)
                 return;
             
@@ -221,7 +237,7 @@
 {
     [self captureBlur];
 //    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
-    [self.activityIndicator startAnimating];
+    [self.activityIndicatorCenter startAnimating];
     
     NSString *url = [self.images[indexPath.row] imagesStandardUrl];
     UIImage *image = [cache imageForKey:url];
@@ -279,7 +295,7 @@
 
 - (void)hideLargeImage
 {
-    [self.activityIndicator stopAnimating];
+    [self.activityIndicatorCenter stopAnimating];
     [UIView animateWithDuration:0.3 animations:^{
         self.blurContainerView.alpha = 0.0;
         self.collectionView.alpha = 1.0;

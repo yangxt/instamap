@@ -20,7 +20,8 @@
     NSArray *location = [position componentsSeparatedByString:@" "];
     self.latitude = location[1];
     self.longitude = location[0];
-    self.description = [[[[attributes valueForKeyPath:@"GeoObject"] valueForKey:@"metaDataProperty"] valueForKey:@"GeocoderMetaData"] valueForKey:@"text"];
+    self.description = [[attributes valueForKeyPath:@"GeoObject"] valueForKey:@"description"];
+    self.name = [[attributes valueForKeyPath:@"GeoObject"] valueForKey:@"name"];
     
     return self;
 }

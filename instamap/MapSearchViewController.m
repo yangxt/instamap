@@ -42,7 +42,8 @@
     [self.mapView setRegion:adjustedRegion animated:YES];
     
     MyAnnotation *myPin = [[MyAnnotation alloc] initWithCoordinate:droppedAt];
-    
+    myPin.title = self.mytitle;
+    myPin.subtitle = self.mysubtitle;
     [self.mapView addAnnotation:myPin];
 }
 
@@ -61,6 +62,7 @@
     }
     pin.animatesDrop = YES;
     pin.draggable = YES;
+    pin.canShowCallout = YES;
     
     return pin;
 }

@@ -15,6 +15,7 @@
     NSString *accessToken;
     NSMutableArray *places;
     NSMutableArray *filteredPlacesArray;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @end
@@ -29,18 +30,14 @@
     }
     return self;
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    if ([places count]==0)
-        [self refresh];
-}
 
 - (void)refresh
 {
+    [activityIndicator startAnimating];
     accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(accessToken == nil) return;
     [InstaApi searchLocationByLat:self.lat andLng:self.lng withAccessToken:accessToken block:^(NSArray *records) {
-        
+        [activityIndicator stopAnimating];
         if (records.count == 0)
         {
             NSLog(@"Where is no places");
@@ -57,7 +54,24 @@
 {
     [super viewDidLoad];
     
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionLeft);
+    [self.view addGestureRecognizer:swipeGesture];
+    
     filteredPlacesArray = [NSMutableArray arrayWithCapacity:[places count]];
+    
+    if ([places count]==0)
+        [self refresh];
+}
+
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture {
+    NSLog(@"perform AllPlaces");
+    [self performSegueWithIdentifier:@"AllPlaces" sender:self];
 }
 
 - (void)didReceiveMemoryWarning

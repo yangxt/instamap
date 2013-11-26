@@ -11,8 +11,5 @@
 @interface SelfCollectionReusableView : UICollectionReusableView
 @property (weak, nonatomic) IBOutlet UIImageView *userPic;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
-- (IBAction)following:(id)sender;
-
-- (IBAction)followed:(id)sender;
 
 @end

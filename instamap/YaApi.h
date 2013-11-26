@@ -11,6 +11,7 @@
 @interface YaApi : NSObject
 
 @property (nonatomic, strong) NSString* description;
+@property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* latitude;
 @property (nonatomic, strong) NSString* longitude;
 

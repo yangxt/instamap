@@ -13,6 +13,7 @@
 @interface SearchLocationViewController ()
 {
     NSMutableArray *location;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @end
@@ -31,6 +32,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionLeft);
+    [self.view addGestureRecognizer:swipeGesture];
+}
+
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture {
+    NSLog(@"perform map");
+    [self performSegueWithIdentifier:@"map" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +65,8 @@
     static NSString *CellIdentifier = @"locationCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [location[indexPath.row] description];
+    cell.textLabel.text = [location[indexPath.row] name];
+    cell.detailTextLabel.text =[location[indexPath.row] description];
     
     return cell;
 }
@@ -65,13 +81,16 @@
         MapSearchViewController *map = [segue destinationViewController];
         map.latitude = [location[[self.tableView indexPathForCell:sender].row] latitude];
         map.longitude = [location[[self.tableView indexPathForCell:sender].row] longitude];
+        map.mytitle = [location[[self.tableView indexPathForCell:sender].row] name];
+        map.mysubtitle = [location[[self.tableView indexPathForCell:sender].row] description];
     }
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [activityIndicator startAnimating];
     [YaApi searchGeocode:searchBar.text block:^(NSArray *records) {
-        
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             NSLog(@"No such location");
         
@@ -90,6 +109,7 @@
 {
     searchBar.text = @"";
     [searchBar resignFirstResponder];
+    location = nil;
     [self.tableView reloadData];
 }
 

@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *largeImage;
 @property (weak, nonatomic) IBOutlet UIView *blurContainerView;
 @property (weak, nonatomic) IBOutlet UIView *transparentView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorCenter;
 - (IBAction)taped:(id)sender;
 
 @property (strong, nonatomic) NSString *userProfilePic;

@@ -15,6 +15,7 @@
 @interface PlaceImagesViewController ()
 {
     SAMCache *cache;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -55,6 +56,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionLeft);
+    [self.view addGestureRecognizer:swipeGesture];
+    
     cache = [SAMCache sharedCache];
     
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
@@ -67,12 +77,19 @@
     
 }
 
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture {
+    NSLog(@"perform users");
+    [self performSegueWithIdentifier:@"users" sender:self];
+}
+
 - (void)refresh
 {
+    [activityIndicator startAnimating];
     if([self.locationIdArray count]==0)
     {
         [InstaApi mediaFromLocation:self.locationId withAccessToken:self.accessToken block:^(NSArray *records) {
         
+            [activityIndicator stopAnimating];
             if (records.count == 0)
             {
                 NSLog(@"where is no images");
@@ -99,6 +116,7 @@
                     NSLog(@"where is no images");
                     if(i == [self.locationIdArray count]-1)
                     {
+                        [activityIndicator stopAnimating];
                         NSLog(@"reloaded");
                         [self.collectionView reloadData];
                     }
@@ -111,6 +129,7 @@
                     NSLog(@"%d", self.images.count);
                     if(i == [self.locationIdArray count]-1)
                     {
+                        [activityIndicator stopAnimating];
                         NSLog(@"reloaded");
                         [self.collectionView reloadData];
                     }
