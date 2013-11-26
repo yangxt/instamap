@@ -179,9 +179,12 @@
     
     if (maximumOffset - currentOffset <= 150.0 && isOnBottom) {
         NSLog(@"Bottom" );
-        isOnBottom = NO;
         InstaApi *q =(InstaApi *)[self.images lastObject];
-        NSLog(@"max %@",q.index);
+        NSLog(@"max %@",q.nextmaxlikeid);
+        if(!q.nextmaxlikeid)
+            return;
+        
+        isOnBottom = NO;
         
         [InstaApi mediaSelfLikedFromMaxId:q.nextmaxlikeid withAccessToken:self.accessToken block:^(NSArray *records) {
             

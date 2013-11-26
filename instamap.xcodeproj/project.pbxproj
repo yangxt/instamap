@@ -232,14 +232,9 @@
 				5066B3F2183B870F00B596DC /* UsersTableViewController.h */,
 				5066B3F3183B870F00B596DC /* UsersTableViewController.m */,
 				50C17878184354CC005C0BD1 /* photoscollection */,
-				50A10DF2183C8F3600A2982D /* MapViewController.h */,
-				50A10DF3183C8F3600A2982D /* MapViewController.m */,
-				50C62118183D062400093DF4 /* MapSearchViewController.h */,
-				50C62119183D062400093DF4 /* MapSearchViewController.m */,
+				50C178831844B3BF005C0BD1 /* maps */,
 				50C6211B183D064300093DF4 /* PlacesViewController.h */,
 				50C6211C183D064300093DF4 /* PlacesViewController.m */,
-				50C6211E183D07A400093DF4 /* MyAnnotation.h */,
-				50C6211F183D07A400093DF4 /* MyAnnotation.m */,
 				50C62121183D274600093DF4 /* PlaceImagesViewController.h */,
 				50C62122183D274600093DF4 /* PlaceImagesViewController.m */,
 				0009AD2F1840C833005F0BA8 /* PhotoViewController.h */,
@@ -326,6 +321,19 @@
 				50C1787D18435542005C0BD1 /* SelfCollectionReusableView.m */,
 			);
 			name = selfcollection;
+			sourceTree = "<group>";
+		};
+		50C178831844B3BF005C0BD1 /* maps */ = {
+			isa = PBXGroup;
+			children = (
+				50A10DF2183C8F3600A2982D /* MapViewController.h */,
+				50A10DF3183C8F3600A2982D /* MapViewController.m */,
+				50C62118183D062400093DF4 /* MapSearchViewController.h */,
+				50C62119183D062400093DF4 /* MapSearchViewController.m */,
+				50C6211E183D07A400093DF4 /* MyAnnotation.h */,
+				50C6211F183D07A400093DF4 /* MyAnnotation.m */,
+			);
+			name = maps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

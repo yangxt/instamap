@@ -186,26 +186,6 @@
         });
     });
     
-//    if(indexPath.row == self.images.count-5)
-//    {
-//        NSLog(@"Bottom" );
-//        InstaApi *q =(InstaApi *)[self.images lastObject];
-//        NSLog(@"max %@",q.index);
-//        
-//        [InstaApi mediaFromUser:self.userId afterMaxId:q.index withAccessToken:self.accessToken block:^(NSArray *records) {
-//            
-//            if (records.count == 0)
-//                return;
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [self.images addObjectsFromArray:records];
-//                [self.collectionView reloadData];
-//                
-//            });
-//        }];
-//        
-//    }
-    
     return cell;
     
 }

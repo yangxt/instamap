@@ -150,25 +150,6 @@
         });
     });
     
-//    if(indexPath.row == self.images.count-5)
-//    {
-//        NSLog(@"Bottom" );
-//        InstaApi *q =(InstaApi *)[self.images lastObject];
-//        NSLog(@"max %@",q.max_id);
-//        
-//        [InstaApi getTag:self.tag afterMaxId:q.max_id withAccessToken:self.accessToken block:^(NSArray *records) {
-//            
-//            if (records.count == 0)
-//                return;
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [self.images addObjectsFromArray:records];
-//                [self.collectionView reloadData];
-//                
-//            });
-//        }];
-//        
-//    }
     
     return cell;
 }
@@ -179,11 +160,13 @@
     
     if (maximumOffset - currentOffset <= 150.0 && isOnBottom) {
         NSLog(@"Bottom" );
-        isOnBottom = NO;
+        
         InstaApi *q =(InstaApi *)[self.images lastObject];
         NSLog(@"max %@",q.max_id);
         if(!q.max_id)
             return;
+        
+        isOnBottom = NO;
         
         [InstaApi getTag:self.tag afterMaxId:q.max_id withAccessToken:self.accessToken block:^(NSArray *records) {
             

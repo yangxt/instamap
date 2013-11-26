@@ -17,12 +17,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="jgB-wO-3P9" kind="relationship" relationship="rootViewController" id="HuY-XO-EOc"/>
+                        <segue destination="isQ-Qs-0BE" kind="relationship" relationship="rootViewController" id="L8z-KI-3no"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dc-31-prA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1442" y="-807"/>
+            <point key="canvasLocation" x="1292" y="-807"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="h8q-4P-dJL">
@@ -72,11 +72,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map Search" id="Npk-Sb-HYN">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="idv-Ua-uq8">
-                            <connections>
-                                <segue destination="isQ-Qs-0BE" kind="push" identifier="search" id="PWa-gV-CX4"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Places" id="XaK-V2-mLA">
                             <connections>
                                 <segue destination="70d-gJ-9rP" kind="push" identifier="places" id="a9C-kL-l0S"/>
@@ -89,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLt-iY-Fcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2136" y="-806"/>
+            <point key="canvasLocation" x="2208" y="-806"/>
         </scene>
         <!--Search Location View Controller - Search-->
         <scene sceneID="J8f-ZG-Lze">
@@ -125,7 +120,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jgB-wO-3P9" kind="push" identifier="search" id="OA6-k0-dGu"/>
+                                    <segue destination="jgB-wO-3P9" kind="push" identifier="search" id="94X-f9-yrH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -134,11 +129,17 @@
                             <outlet property="delegate" destination="isQ-Qs-0BE" id="5MG-pS-F7r"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="1om-sr-HKC"/>
+                    <navigationItem key="navigationItem" title="Search" id="1om-sr-HKC">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="mpg-Rq-YB2">
+                            <connections>
+                                <segue destination="jgB-wO-3P9" kind="push" identifier="map" id="u2h-Bk-3HU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2U2-ph-Beu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2136" y="-1605"/>
+            <point key="canvasLocation" x="1746" y="-807"/>
         </scene>
         <!--Places View Controller - Places-->
         <scene sceneID="hwF-iy-mdG">
@@ -896,9 +897,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="hl7-nC-HlI"/>
         <segue reference="onS-9S-24s"/>
-        <segue reference="yGb-ZN-gHk"/>
-        <segue reference="SQk-qx-18G"/>
-        <segue reference="OA6-k0-dGu"/>
+        <segue reference="94X-f9-yrH"/>
         <segue reference="0e4-Gh-HDq"/>
+        <segue reference="SQk-qx-18G"/>
+        <segue reference="jeF-pZ-wN8"/>
     </inferredMetricsTieBreakers>
 </document>
