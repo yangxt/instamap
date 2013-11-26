@@ -716,13 +716,10 @@
                             <outlet property="delegate" destination="n6h-6G-FFT" id="goM-qr-ARD"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Tags media" id="7bF-4M-sgj">
-                        <barButtonItem key="rightBarButtonItem" title="Users" id="fwt-cf-i8k">
-                            <connections>
-                                <segue destination="04U-qa-00i" kind="push" identifier="users" id="onS-9S-24s"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Tags media" id="7bF-4M-sgj"/>
+                    <connections>
+                        <segue destination="04U-qa-00i" kind="push" identifier="users" id="X2P-Jc-f8n"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95d-mq-kDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -941,10 +938,10 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hl7-nC-HlI"/>
+        <segue reference="X2P-Jc-f8n"/>
+        <segue reference="Mhc-Lt-8Et"/>
+        <segue reference="TnW-bm-rZc"/>
         <segue reference="N69-WQ-PYU"/>
         <segue reference="D9N-XO-hiR"/>
-        <segue reference="nFD-OS-UhO"/>
-        <segue reference="naF-nd-wCh"/>
-        <segue reference="TnW-bm-rZc"/>
     </inferredMetricsTieBreakers>
 </document>

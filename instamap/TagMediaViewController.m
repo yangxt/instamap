@@ -17,6 +17,7 @@
     SAMCache *cache;
     float minid;
     BOOL isOnBottom;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -54,6 +55,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionLeft);
+    [self.view addGestureRecognizer:swipeGesture];
+    
     cache = [SAMCache sharedCache];
     isOnBottom = YES;
     
@@ -74,12 +84,19 @@
     
 }
 
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture {
+    NSLog(@"perform users");
+    [self performSegueWithIdentifier:@"users" sender:self];
+}
+
 - (void)refresh
 {
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil) return;
+    [activityIndicator startAnimating];
     [InstaApi getTag:self.tag withAccessToken:self.accessToken block:^(NSArray *records) {
         
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             return;
         
@@ -168,8 +185,10 @@
         
         isOnBottom = NO;
         
+        [activityIndicator startAnimating];
         [InstaApi getTag:self.tag afterMaxId:q.max_id withAccessToken:self.accessToken block:^(NSArray *records) {
             
+            [activityIndicator stopAnimating];
             if (records.count == 0)
                 return;
             
@@ -191,8 +210,10 @@
     
     NSLog(@"min %@",q.min_id);
     
+    [activityIndicator startAnimating];
     [InstaApi getTag:self.tag beforeMinId:q.min_id withAccessToken:self.accessToken block:^(NSArray *records) {
         
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             return;
         

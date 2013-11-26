@@ -14,6 +14,7 @@
 @interface FollowTableViewController ()
 {
     NSString *accessToken;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic, strong) NSMutableArray* users;
@@ -47,9 +48,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-- (void)viewWillAppear:(BOOL)animated
-{
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicator.hidesWhenStopped = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+
     if([self.users count]==0)
         [self refresh];
 }
@@ -124,9 +127,11 @@
 {
     accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(accessToken == nil) return;
+    [activityIndicator startAnimating];
     [InstaApi followedUserswithAccessToken:accessToken block:^(NSArray *records)
     {
-                
+      
+        [activityIndicator stopAnimating];
         if (records.count == 0)
             NSLog(@"where is no users");
         else
@@ -140,8 +145,6 @@
         }
     }];
 }
-        
-
 
 
 @end
