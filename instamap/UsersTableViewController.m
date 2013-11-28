@@ -28,10 +28,7 @@
 
 - (NSMutableSet *)loading_urls
 {
-    if (_loading_urls == nil)
-        _loading_urls = [NSMutableSet set];
-    return _loading_urls;
-    //return _loading_urls ?: (_loading_urls = [NSMutableSet set]);
+    return _loading_urls ?: (_loading_urls = [NSMutableSet set]);
 }
 
 - (NSMutableDictionary *)ipByUrl

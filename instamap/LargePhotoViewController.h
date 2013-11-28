@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSMutableArray *images;
 @property (assign, nonatomic) NSInteger row;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) UIView *background;
 
 @end

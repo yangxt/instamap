@@ -77,7 +77,6 @@
 
 - (void)selfUserProfileLoad
 {
-    self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil) return;
     [InstaApi searchUserId:@"self" withAccessToken:self.accessToken block:^(NSArray *records) {
         
@@ -94,8 +93,6 @@
 
 - (void)refresh
 {
-    self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
-    if(self.accessToken == nil) return;
     [InstaApi mediaSelfLikedwithAccessToken:self.accessToken block:^(NSArray *records) {
         
         [activityIndicator stopAnimating];
@@ -169,7 +166,6 @@
             UIImageView * imageView = (id)[cell2.contentView viewWithTag:200];
             imageView.image = image;
             [self.ipByUrl removeObjectForKey:url];
-            
             
         });
     });
