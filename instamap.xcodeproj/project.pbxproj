@@ -35,6 +35,7 @@
 		508346B6183B761900918420 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50834698183B761900918420 /* UIKit.framework */; };
 		508346BE183B761900918420 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 508346BC183B761900918420 /* InfoPlist.strings */; };
 		508346C0183B761900918420 /* instamapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 508346BF183B761900918420 /* instamapTests.m */; };
+		50969EA918465DE800360156 /* LargePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50969EA818465DE800360156 /* LargePhotoViewController.m */; };
 		50A10DEB183BD0AE00A2982D /* NSData+AsyncCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */; };
 		50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF0183BE5D400A2982D /* SAMCache.m */; };
 		50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A10DF3183C8F3600A2982D /* MapViewController.m */; };
@@ -106,6 +107,8 @@
 		508346BB183B761900918420 /* instamapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "instamapTests-Info.plist"; sourceTree = "<group>"; };
 		508346BD183B761900918420 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		508346BF183B761900918420 /* instamapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = instamapTests.m; sourceTree = "<group>"; };
+		50969EA718465DE800360156 /* LargePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargePhotoViewController.h; sourceTree = "<group>"; };
+		50969EA818465DE800360156 /* LargePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargePhotoViewController.m; sourceTree = "<group>"; };
 		50A10DE9183BD0AE00A2982D /* NSData+AsyncCacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AsyncCacher.h"; sourceTree = "<group>"; };
 		50A10DEA183BD0AE00A2982D /* NSData+AsyncCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AsyncCacher.m"; sourceTree = "<group>"; };
 		50A10DEF183BE5D400A2982D /* SAMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMCache.h; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */,
 				0009AD32184221EB005F0BA8 /* PhotosCollectionReusableView.h */,
 				0009AD33184221EB005F0BA8 /* PhotosCollectionReusableView.m */,
+				50969EA718465DE800360156 /* LargePhotoViewController.h */,
+				50969EA818465DE800360156 /* LargePhotoViewController.m */,
 			);
 			name = photoscollection;
 			sourceTree = "<group>";
@@ -496,6 +501,7 @@
 				50C1788218438539005C0BD1 /* FollowTableViewController.m in Sources */,
 				508346A1183B761900918420 /* main.m in Sources */,
 				0038BE7518429A540079B135 /* SearchTagsViewController.m in Sources */,
+				50969EA918465DE800360156 /* LargePhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

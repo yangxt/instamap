@@ -12,6 +12,7 @@
 #import "MapViewController.h"
 #import <JPSThumbnail.h>
 #import "PhotosCollectionReusableView.h"
+#import "LargePhotoViewController.h"
 
 @interface PhotosCollectionViewController ()
 {
@@ -20,6 +21,7 @@
     UIImage *blurrredImage;
     BOOL isOnBottom;
     UIActivityIndicatorView *activityIndicator;
+    NSInteger curRow;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -225,42 +227,50 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self hideLargeImage];
+//    [self hideLargeImage];
     if ([[segue identifier] isEqualToString:@"map"])
     {
         MapViewController *map = [segue destinationViewController];
         [map setThumbnails:thumbnails];
     }
+    if ([[segue identifier] isEqualToString:@"large"])
+    {
+        LargePhotoViewController *photo = [segue destinationViewController];
+        photo.images = self.images;
+        photo.row = curRow;
+    }
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self captureBlur];
-//    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
-    [self.activityIndicatorCenter startAnimating];
-    
-    NSString *url = [self.images[indexPath.row] imagesStandardUrl];
-    UIImage *image = [cache imageForKey:url];
-    if (image)
-    {
-        self.largeImage.image = image;
-    }
-    else
-    {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-            UIImage * image = [UIImage imageWithData:data];
-            [cache setImage:image forKey:url];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.largeImage.image = image;
-            });
-        });
-    }
-
-    [UIView animateWithDuration:0.3 animations:^{
-        self.blurContainerView.alpha = 1.0;
-        self.collectionView.alpha = 0.0;
-    }];
+    curRow = indexPath.row;
+    [self performSegueWithIdentifier:@"large" sender:nil];
+//    [self captureBlur];
+////    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
+//    [self.activityIndicatorCenter startAnimating];
+//    
+//    NSString *url = [self.images[indexPath.row] imagesStandardUrl];
+//    UIImage *image = [cache imageForKey:url];
+//    if (image)
+//    {
+//        self.largeImage.image = image;
+//    }
+//    else
+//    {
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+//            UIImage * image = [UIImage imageWithData:data];
+//            [cache setImage:image forKey:url];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                self.largeImage.image = image;
+//            });
+//        });
+//    }
+//
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.blurContainerView.alpha = 1.0;
+//        self.collectionView.alpha = 0.0;
+//    }];
 }
 
 - (void) captureBlur {
