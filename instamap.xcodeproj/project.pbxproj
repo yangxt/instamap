@@ -21,6 +21,7 @@
 		5066B3F4183B870F00B596DC /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F3183B870F00B596DC /* UsersTableViewController.m */; };
 		5066B3FA183B8A2900B596DC /* InstaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F7183B8A2900B596DC /* InstaClient.m */; };
 		5066B3FB183B8A2900B596DC /* InstaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5066B3F9183B8A2900B596DC /* InstaApi.m */; };
+		506DEC2C18488D1E00F5DD5C /* RCBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506DEC2B18488D1E00F5DD5C /* RCBlurredImageView.m */; };
 		50715DC7183BAC0C00BAD71D /* PhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */; };
 		50834695183B761900918420 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50834694183B761900918420 /* Foundation.framework */; };
 		50834697183B761900918420 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50834696183B761900918420 /* CoreGraphics.framework */; };
@@ -88,6 +89,8 @@
 		5066B3F7183B8A2900B596DC /* InstaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaClient.m; sourceTree = "<group>"; };
 		5066B3F8183B8A2900B596DC /* InstaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaApi.h; sourceTree = "<group>"; };
 		5066B3F9183B8A2900B596DC /* InstaApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaApi.m; sourceTree = "<group>"; };
+		506DEC2A18488D1E00F5DD5C /* RCBlurredImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCBlurredImageView.h; sourceTree = "<group>"; };
+		506DEC2B18488D1E00F5DD5C /* RCBlurredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCBlurredImageView.m; sourceTree = "<group>"; };
 		50715DC5183BAC0C00BAD71D /* PhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewController.h; sourceTree = "<group>"; };
 		50715DC6183BAC0C00BAD71D /* PhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewController.m; sourceTree = "<group>"; };
 		50834691183B761900918420 /* instamap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instamap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +186,15 @@
 			name = InstaWork;
 			sourceTree = "<group>";
 		};
+		506DEC2918488CF300F5DD5C /* RCBlurredImageView */ = {
+			isa = PBXGroup;
+			children = (
+				506DEC2A18488D1E00F5DD5C /* RCBlurredImageView.h */,
+				506DEC2B18488D1E00F5DD5C /* RCBlurredImageView.m */,
+			);
+			name = RCBlurredImageView;
+			sourceTree = "<group>";
+		};
 		50834688183B761900918420 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +233,7 @@
 		5083469A183B761900918420 /* instamap */ = {
 			isa = PBXGroup;
 			children = (
+				506DEC2918488CF300F5DD5C /* RCBlurredImageView */,
 				0038BE6618423AA40079B135 /* YaWork */,
 				50A10DEE183BE58C00A2982D /* SAMCache */,
 				50A10DE8183BD08400A2982D /* NSData+AsyncCacher */,
@@ -495,6 +508,7 @@
 				50C62123183D274600093DF4 /* PlaceImagesViewController.m in Sources */,
 				50A10DF4183C8F3600A2982D /* MapViewController.m in Sources */,
 				0038BE6918423AEC0079B135 /* YaClient.m in Sources */,
+				506DEC2C18488D1E00F5DD5C /* RCBlurredImageView.m in Sources */,
 				0038BE72184273B30079B135 /* SearchUsersViewController.m in Sources */,
 				50A10DF1183BE5D400A2982D /* SAMCache.m in Sources */,
 				50C1787B18435508005C0BD1 /* SelfCollectionViewController.m in Sources */,

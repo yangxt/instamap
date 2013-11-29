@@ -11,14 +11,15 @@
 #import "InstaApi.h"
 #import "SAMCache.h"
 #import <JPSThumbnail.h>
+#import "RCBlurredImageView.h"
 
 @interface LargePhotoViewController ()
 {
     __block SAMCache *cache;
     NSMutableArray *thumbnails;
-    UIImage *blurrredImage;
     BOOL isOnBottom;
     UIActivityIndicatorView *activityIndicator;
+    RCBlurredImageView *blurredImageView;
 }
 
 @property (strong, nonatomic) __block NSMutableSet * loading_urls;
@@ -74,6 +75,11 @@
         NSLog(@"accessToken == nil");
     }
     
+    blurredImageView = [[RCBlurredImageView alloc] initWithImage:self.background];
+    [blurredImageView setBlurIntensity:0.8f];
+    blurredImageView.frame = self.view.frame;
+    [self.view addSubview:blurredImageView ];
+    [self.view sendSubviewToBack:blurredImageView ];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,6 +172,15 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(testest) userInfo:nil repeats:NO];
+    [UIView animateWithDuration:0.3 animations:^{
+        [blurredImageView setBlurIntensity:0.0f];
+        self.collectionView.alpha = 0.0;
+    }];
+}
+- (void) testest
+{
+    NSLog(@"dismiss");
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 @end

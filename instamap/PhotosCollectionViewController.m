@@ -13,15 +13,17 @@
 #import <JPSThumbnail.h>
 #import "PhotosCollectionReusableView.h"
 #import "LargePhotoViewController.h"
+#import "RCBlurredImageView.h"
 
 @interface PhotosCollectionViewController ()
 {
     SAMCache *cache;
     NSMutableArray *thumbnails;
-    UIImage *blurrredImage;
+    RCBlurredImageView *blurredImageView;
     BOOL isOnBottom;
     UIActivityIndicatorView *activityIndicator;
     NSInteger curRow;
+    UIImage *screenshot;
 }
 
 @property (strong, nonatomic) NSMutableSet * loading_urls;
@@ -56,10 +58,6 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    self.blurContainerView.alpha = 0.0;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -77,12 +75,7 @@
     cache = [SAMCache sharedCache];
     thumbnails = [NSMutableArray array];
     isOnBottom = YES;
-    
-    self.largeImage.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.largeImage.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
-    self.largeImage.layer.shadowOpacity = 0.41f;
-    self.largeImage.layer.shadowRadius = 5.0f;
-    
+
     self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Access_token"]];
     if(self.accessToken == nil){
          NSLog(@"accessToken == nil");
@@ -227,7 +220,6 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    [self hideLargeImage];
     if ([[segue identifier] isEqualToString:@"map"])
     {
         MapViewController *map = [segue destinationViewController];
@@ -238,81 +230,42 @@
         LargePhotoViewController *photo = [segue destinationViewController];
         photo.images = self.images;
         photo.row = curRow;
+        photo.background = screenshot;
     }
 }
+
+- (UIImage *) takeScreenshot
+{
+    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIGraphicsBeginImageContextWithOptions(layer.frame.size, NO, scale);
+    
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    return UIGraphicsGetImageFromCurrentImageContext();
+}
+
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     curRow = indexPath.row;
-    [self performSegueWithIdentifier:@"large" sender:nil];
-//    [self captureBlur];
-////    [self performSelectorInBackground:@selector(captureBlur) withObject:nil];
-//    [self.activityIndicatorCenter startAnimating];
-//    
-//    NSString *url = [self.images[indexPath.row] imagesStandardUrl];
-//    UIImage *image = [cache imageForKey:url];
-//    if (image)
-//    {
-//        self.largeImage.image = image;
-//    }
-//    else
-//    {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-//            UIImage * image = [UIImage imageWithData:data];
-//            [cache setImage:image forKey:url];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                self.largeImage.image = image;
-//            });
-//        });
-//    }
-//
-//    [UIView animateWithDuration:0.3 animations:^{
-//        self.blurContainerView.alpha = 1.0;
-//        self.collectionView.alpha = 0.0;
-//    }];
-}
-
-- (void) captureBlur {
-    //Get a UIImage from the UIView
-    NSLog(@"blur capture");
-    UIGraphicsBeginImageContext(self.collectionView.bounds.size);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
     
-    //Blur the UIImage
-    CIImage *imageToBlur = [CIImage imageWithCGImage:viewImage.CGImage];
-    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
-    [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
-    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 2] forKey: @"inputRadius"];
-    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
-    
-    //create UIImage from filtered image
-    blurrredImage = [[UIImage alloc] initWithCIImage:resultImage];
-    
-    //Place the UIImage in a UIImageView
-    UIImageView *newView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    newView.image = blurrredImage;
-    
-    //insert blur UIImageView below transparent view inside the blur image container
-    [self.blurContainerView insertSubview:newView belowSubview:self.transparentView];
-}
-
-- (IBAction)taped:(id)sender {
-    [self hideLargeImage];
-}
-
-- (void)hideLargeImage
-{
-    [self.activityIndicatorCenter stopAnimating];
+    screenshot = [self takeScreenshot];
+    blurredImageView = [[RCBlurredImageView alloc] initWithImage:screenshot];
+    [blurredImageView setBlurIntensity:0.0f];
+    blurredImageView.frame = self.view.frame;
+    [self.view addSubview:blurredImageView ];
+    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(testest) userInfo:nil repeats:NO];
     [UIView animateWithDuration:0.3 animations:^{
-        self.blurContainerView.alpha = 0.0;
-        self.collectionView.alpha = 1.0;
+        [blurredImageView setBlurIntensity:0.8f];
     }];
-    self.largeImage.image = nil;
 }
+- (void) testest
+{
+    NSLog(@"perform");
+    [self performSegueWithIdentifier:@"large" sender:nil];
+    [blurredImageView removeFromSuperview];
 
+}
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;

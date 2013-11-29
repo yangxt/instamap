@@ -371,51 +371,54 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jwb-bF-lMw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AIq-Xx-Na1">
+                                <rect key="frame" x="0.0" y="75" width="320" height="310"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cp8-fN-sZn">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9dd-Bp-txq">
                                     <size key="itemSize" width="310" height="310"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="dS9-mS-cwz">
-                                        <rect key="frame" x="5" y="75" width="310" height="310"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="DhS-SW-j6a">
+                                        <rect key="frame" x="5" y="0.0" width="310" height="310"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="310"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-Mr-50C">
-                                                    <rect key="frame" x="142" y="141" width="37" height="37"/>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-Dc-C8c">
+                                                    <rect key="frame" x="142" y="135" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
-                                                <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtj-BP-cyt">
+                                                <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lBv-WY-0Xj">
                                                     <rect key="frame" x="0.0" y="0.0" width="310" height="310"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="f2E-Dc-C8c" firstAttribute="leading" secondItem="DhS-SW-j6a" secondAttribute="leading" constant="142" id="1ud-Md-b1t"/>
+                                            <constraint firstAttribute="trailing" secondItem="lBv-WY-0Xj" secondAttribute="trailing" id="2he-Cy-V2z"/>
+                                            <constraint firstAttribute="bottom" secondItem="lBv-WY-0Xj" secondAttribute="bottom" id="36m-G7-pd1"/>
+                                            <constraint firstItem="f2E-Dc-C8c" firstAttribute="top" secondItem="DhS-SW-j6a" secondAttribute="top" constant="135" id="i3z-tm-Yek"/>
+                                            <constraint firstItem="lBv-WY-0Xj" firstAttribute="top" secondItem="DhS-SW-j6a" secondAttribute="top" id="ojK-rx-1eV"/>
+                                            <constraint firstItem="lBv-WY-0Xj" firstAttribute="leading" secondItem="DhS-SW-j6a" secondAttribute="leading" id="tD3-J5-X2X"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="CoC-XP-Jbo" id="2ly-9O-tLj"/>
-                                    <outlet property="delegate" destination="CoC-XP-Jbo" id="PVP-eX-R8o"/>
+                                    <outlet property="dataSource" destination="CoC-XP-Jbo" id="HCK-CA-VHR"/>
+                                    <outlet property="delegate" destination="CoC-XP-Jbo" id="qDW-15-5k2"/>
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Jwb-bF-lMw" secondAttribute="bottom" id="JFx-l4-Q7M"/>
-                            <constraint firstItem="Jwb-bF-lMw" firstAttribute="leading" secondItem="ua2-9D-ymD" secondAttribute="leading" id="JW8-sN-F0l"/>
-                            <constraint firstAttribute="trailing" secondItem="Jwb-bF-lMw" secondAttribute="trailing" id="VjP-DD-kW2"/>
-                            <constraint firstItem="Jwb-bF-lMw" firstAttribute="top" secondItem="ua2-9D-ymD" secondAttribute="top" id="l44-d1-bdP"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Jwb-bF-lMw" id="qh9-3Z-Cwn"/>
+                        <outlet property="collectionView" destination="AIq-Xx-Na1" id="5lh-xv-cLG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lh8-NB-jcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -644,15 +647,10 @@
                     <connections>
                         <outlet property="collectionView" destination="z7Q-nR-tVU" id="ViA-Xg-uw8"/>
                         <segue destination="uBv-un-BNg" kind="push" identifier="map" id="Qzo-PF-AEN"/>
-                        <segue destination="CoC-XP-Jbo" kind="modal" identifier="large" modalTransitionStyle="flipHorizontal" id="LL1-fL-ZNN"/>
+                        <segue destination="CoC-XP-Jbo" kind="modal" identifier="large" modalTransitionStyle="flipHorizontal" animates="NO" id="LL1-fL-ZNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ak8-JH-OAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="pV2-Qb-95b">
-                    <connections>
-                        <action selector="taped:" destination="Ox7-fN-oiW" id="unb-KQ-E0a"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4186" y="-807"/>
         </scene>
