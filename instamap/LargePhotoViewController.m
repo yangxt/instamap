@@ -51,10 +51,9 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-
-  [self.collectionView setContentOffset:CGPointMake(320*self.row, 0) animated:NO];
-
+- (void)viewDidLayoutSubviews
+{
+    [self.collectionView setContentOffset:CGPointMake(320*self.row, 0) animated:NO];
 }
 
 - (void)viewDidLoad
@@ -147,13 +146,13 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(testest) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(delayDismiss) userInfo:nil repeats:NO];
     [UIView animateWithDuration:0.3 animations:^{
         [blurredImageView setBlurIntensity:0.0f];
         self.collectionView.alpha = 0.0;
     }];
 }
-- (void) testest
+- (void) delayDismiss
 {
     NSLog(@"dismiss");
     [self dismissViewControllerAnimated:NO completion:nil];

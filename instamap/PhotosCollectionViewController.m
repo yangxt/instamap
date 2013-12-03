@@ -250,20 +250,28 @@
     curRow = indexPath.row;
     
     screenshot = [self takeScreenshot];
+    
+    [self setWantsFullScreenLayout:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.tabBarController.tabBar setHidden:YES];
+    
     blurredImageView = [[RCBlurredImageView alloc] initWithImage:screenshot];
     [blurredImageView setBlurIntensity:0.0f];
-    blurredImageView.frame = self.view.frame;
-    [self.view addSubview:blurredImageView ];
-    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(testest) userInfo:nil repeats:NO];
+    blurredImageView.frame = blurredImageView.bounds;
+    [self.view insertSubview:blurredImageView aboveSubview:self.collectionView ];
+    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(delayPerform) userInfo:nil repeats:NO];
     [UIView animateWithDuration:0.3 animations:^{
         [blurredImageView setBlurIntensity:0.8f];
     }];
 }
-- (void) testest
+- (void) delayPerform
 {
     NSLog(@"perform");
     [self performSegueWithIdentifier:@"large" sender:nil];
     [blurredImageView removeFromSuperview];
+    [self setWantsFullScreenLayout:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.tabBarController.tabBar setHidden:NO];
 
 }
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
