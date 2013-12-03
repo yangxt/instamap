@@ -77,20 +77,16 @@
     
     blurredImageView = [[RCBlurredImageView alloc] initWithImage:self.background];
     [blurredImageView setBlurIntensity:0.8f];
-    blurredImageView.frame = self.view.frame;
-    [self.view addSubview:blurredImageView ];
-    [self.view sendSubviewToBack:blurredImageView ];
+    blurredImageView.frame = blurredImageView.bounds;
+    [self.view insertSubview:blurredImageView belowSubview:self.collectionView];
+    
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 640);
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(320, 320);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

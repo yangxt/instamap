@@ -392,7 +392,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-Dc-C8c">
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-Dc-C8c">
                                                     <rect key="frame" x="140" y="140" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
@@ -404,12 +404,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="f2E-Dc-C8c" firstAttribute="leading" secondItem="DhS-SW-j6a" secondAttribute="leading" constant="142" id="1ud-Md-b1t"/>
                                             <constraint firstAttribute="trailing" secondItem="lBv-WY-0Xj" secondAttribute="trailing" constant="5" id="2he-Cy-V2z"/>
                                             <constraint firstAttribute="bottom" secondItem="lBv-WY-0Xj" secondAttribute="bottom" constant="5" id="36m-G7-pd1"/>
-                                            <constraint firstItem="f2E-Dc-C8c" firstAttribute="top" secondItem="DhS-SW-j6a" secondAttribute="top" constant="135" id="i3z-tm-Yek"/>
+                                            <constraint firstItem="f2E-Dc-C8c" firstAttribute="top" secondItem="DhS-SW-j6a" secondAttribute="top" constant="140" id="eaa-uY-iT7"/>
                                             <constraint firstItem="lBv-WY-0Xj" firstAttribute="top" secondItem="DhS-SW-j6a" secondAttribute="top" constant="5" id="ojK-rx-1eV"/>
                                             <constraint firstItem="lBv-WY-0Xj" firstAttribute="leading" secondItem="DhS-SW-j6a" secondAttribute="leading" constant="5" id="tD3-J5-X2X"/>
+                                            <constraint firstItem="f2E-Dc-C8c" firstAttribute="leading" secondItem="DhS-SW-j6a" secondAttribute="leading" constant="140" id="wCH-am-FBp"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
