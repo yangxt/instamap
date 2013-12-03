@@ -15,14 +15,14 @@
 
 @interface LargePhotoViewController ()
 {
-    __block SAMCache *cache;
+    SAMCache *cache;
     NSMutableArray *thumbnails;
     BOOL isOnBottom;
     UIActivityIndicatorView *activityIndicator;
     RCBlurredImageView *blurredImageView;
 }
 
-@property (strong, nonatomic) __block NSMutableSet * loading_urls;
+@property (strong, nonatomic) NSMutableSet * loading_urls;
 @property (strong, nonatomic) NSMutableDictionary * ipByUrl;
 
 @property (nonatomic, strong) NSString* accessToken;
@@ -53,7 +53,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
- [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.row inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+  [self.collectionView setContentOffset:CGPointMake(320*self.row, 0) animated:NO];
 
 }
 
@@ -110,43 +110,22 @@
     
     NSString * url = [self.images[indexPath.row] imagesStandardUrl];
     self.ipByUrl[url] = indexPath;
-    
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{
-        if(indexPath.row-1<0)return ;
-        NSString * urlprev = [self.images[indexPath.row-1] imagesStandardUrl];
-        if([self.loading_urls containsObject:urlprev])
-            return ;
-        NSLog(@"prev-%d", indexPath.row-1);
-        [self.loading_urls addObject:urlprev];
-        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlprev]];
-        UIImage * image = [UIImage imageWithData:data];
-        [cache setImage:image forKey:urlprev];
-    });
-    dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{
-        if(indexPath.row==self.images.count-1)
-            return ;
-        NSString * urlnext = [self.images[indexPath.row+1] imagesStandardUrl];
-        if([self.loading_urls containsObject:urlnext])return ;
-        NSLog(@"next-%d", indexPath.row+1);
-        [self.loading_urls addObject:urlnext];
-        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlnext]];
-        UIImage * image = [UIImage imageWithData:data];
-        [cache setImage:image forKey:urlnext];
-    });
-    
+
     UIImageView * imageView = (id)[cell.contentView viewWithTag:200];
     imageView.image = nil;
     UIImage * image = [cache imageForKey:url];
     if (image)
     {
-         NSLog(@"imaged-%d", indexPath.row);
+         NSLog(@"imaged-%ld", (long)indexPath.row);
         imageView.image = image;
         return cell;
     }
     
-    dispatch_group_async(group,dispatch_get_global_queue(0,0), ^{
-        NSLog(@"cur-%d", indexPath.row);
+    if ([self.loading_urls containsObject:url])
+        return cell;
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSLog(@"cur-%ld", (long)indexPath.row);
         [self.loading_urls addObject:url];
         NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         UIImage * image = [UIImage imageWithData:data];
@@ -183,4 +162,21 @@
     NSLog(@"dismiss");
     [self dismissViewControllerAnimated:NO completion:nil];
 }
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    float x = round(scrollView.contentOffset.x/320)*320;
+    [self.collectionView setContentOffset:CGPointMake(x, 0) animated:YES];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(!decelerate)
+    {
+        float x = round(scrollView.contentOffset.x/320)*320;
+        [self.collectionView setContentOffset:CGPointMake(x, 0) animated:YES];
+    }
+}
+
+
 @end
